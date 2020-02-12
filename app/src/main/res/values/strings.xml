@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Statmaster</string>
+    <string name="button_addGame">Add Game</string>
+    <string name="hint_gameTitle">Game Title</string>
 </resources>
