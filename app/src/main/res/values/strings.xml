@@ -2,4 +2,6 @@
     <string name="app_name">Statmaster</string>
     <string name="button_addGame">Add Game</string>
     <string name="hint_gameTitle">Game Title</string>
+    <string name="hint_gameScore">Score </string>
+    <string name="menu_addGame">Add</string>
 </resources>
