@@ -12,6 +12,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.GameActivity">
         </activity>
+        <activity android:name=".activities.PlayerActivity">
+        </activity>
         <activity android:name=".activities.GameListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

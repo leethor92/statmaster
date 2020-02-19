@@ -1,4 +1,3 @@
 package models
 
-class PlayerModel {
-}
+data class PlayerModel(var name: String = "", var number: String = "")
