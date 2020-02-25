@@ -46,9 +46,8 @@ class GameActivity : AppCompatActivity() , AnkoLogger {
                 }
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
-            }
-            else {
-                toast ("Please Enter a title")
+            } else {
+                toast("Please Enter a title")
             }
         }
     }
@@ -69,34 +68,4 @@ class GameActivity : AppCompatActivity() , AnkoLogger {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    class PlayerAdapter constructor(private var players: List<PlayerModel>) :
-        RecyclerView.Adapter<PlayerAdapter.MainHolder>() {
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-            return MainHolder(
-                LayoutInflater.from(parent?.context).inflate(
-                    R.layout.card_player,
-                    parent,
-                    false
-                )
-            )
-        }
-
-        override fun onBindViewHolder(holder: MainHolder, position: Int) {
-            val player = players[holder.adapterPosition]
-            holder.bind(player)
-        }
-
-        override fun getItemCount(): Int = players.size
-
-        class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-            fun bind(player: PlayerModel) {
-                itemView.playerName.text = player.name
-                itemView.number.text = player.number
-            }
-        }
-    }
-
 }
