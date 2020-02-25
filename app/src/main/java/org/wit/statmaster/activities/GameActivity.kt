@@ -62,6 +62,11 @@ class GameActivity : AppCompatActivity() , AnkoLogger {
         when (item?.itemId) {
             R.id.item_addPlayer -> startActivityForResult<PlayerActivity>(0)
         }
+        when (item?.itemId) {
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
         return super.onOptionsItemSelected(item)
     }
 

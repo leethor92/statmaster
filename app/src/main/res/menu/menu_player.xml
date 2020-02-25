@@ -3,14 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item_cancel"
+        android:id="@+id/item_cancelPlayer"
         android:icon="@android:drawable/ic_delete"
         android:title="@string/menu_cancelPlayer"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/item_addPlayer"
-        android:icon="@android:drawable/ic_menu_add"
-        android:title="@string/menu_addPlayer"
         app:showAsAction="always" />
 </menu>
