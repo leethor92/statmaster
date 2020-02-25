@@ -19,5 +19,8 @@ class MainApp : Application(), AnkoLogger {
         players.add(PlayerModel("Ross", "2"))
         players.add(PlayerModel("David", "3"))
 
+        games.add(GameModel("Match 1", "1:15 - 2:03"))
+        games.add(GameModel("Match 2", "2:13 - 4:10"))
+        games.add(GameModel("Match 3", "1:08 - 4:07"))
     }
 }
