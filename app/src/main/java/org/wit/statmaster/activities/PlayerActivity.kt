@@ -28,17 +28,18 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
         setSupportActionBar(toolbarPlayer)
         info("Player Activity started..")
 
+        if (intent.hasExtra("player_edit")) {
+            player = intent.extras?.getParcelable<PlayerModel>("player_edit")!!
+            playerName.setText(player.name)
+            number.setText(player.number)
+        }
+
         btnAdd.setOnClickListener() {
             player.name = playerName.text.toString()
-
             player.number = number.text.toString()
-
             if (player.name.isNotEmpty()) {
-                app.players.add(player.copy())
+                app.players.create(player.copy())
                 info("add Button Pressed: $player")
-                for (i in app.players.indices) {
-                    info("Player[$i]:${app.players[i]}")
-                }
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             }

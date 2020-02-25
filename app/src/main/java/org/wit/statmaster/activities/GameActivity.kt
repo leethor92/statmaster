@@ -11,13 +11,10 @@ import kotlinx.android.synthetic.main.card_player.view.*
 import main.MainApp
 import models.GameModel
 import models.PlayerModel
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.startActivityForResult
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.*
 import org.wit.statmaster.R
 
-class GameActivity : AppCompatActivity() , AnkoLogger {
+class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
 
     var game = GameModel()
     lateinit var app: MainApp
@@ -29,21 +26,25 @@ class GameActivity : AppCompatActivity() , AnkoLogger {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView1.layoutManager = layoutManager
-        recyclerView1.adapter = PlayerAdapter(app.players)
+        //recyclerView1.adapter = PlayerAdapter(app.players)
+        recyclerView1.adapter = PlayerAdapter(app.players.findAll(), this)
 
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
         info("Player Activity started..")
 
+        if (intent.hasExtra("game_edit")) {
+            game = intent.extras?.getParcelable<GameModel>("game_edit")!!
+            gameTitle.setText(game.title)
+            score.setText(game.score)
+        }
+
         btnAdd.setOnClickListener() {
             game.title = gameTitle.text.toString()
             game.score = score.text.toString()
             if (game.title.isNotEmpty()) {
-                app.games.add(game.copy())
+                app.games.create(game.copy())
                 info("add Button Pressed: $game")
-                for (i in app.games.indices) {
-                    info("Game[$i]:${this.app.games[i]}")
-                }
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             } else {
@@ -67,5 +68,9 @@ class GameActivity : AppCompatActivity() , AnkoLogger {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onPlayerClick(player: PlayerModel) {
+        startActivityForResult(intentFor<PlayerActivity>().putExtra("player_edit", player), 0)
     }
 }

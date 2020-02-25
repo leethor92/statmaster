@@ -1,0 +1,38 @@
+package models
+
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
+
+var lastId = 0L
+
+internal fun getId(): Long {
+    return lastId++
+}
+
+class GameMemStore : GameStore, AnkoLogger {
+
+    val games = ArrayList<GameModel>()
+
+    override fun findAll(): List<GameModel> {
+        return games
+    }
+
+    override fun create(game: GameModel) {
+        game.id = getId()
+        games.add(game)
+        logAll();
+    }
+
+    override fun update(game: GameModel) {
+        var foundGame: GameModel? = games.find { g -> g.id == game.id }
+        if (foundGame != null) {
+            foundGame.title = game.title
+            foundGame.score = game.score
+            logAll()
+        }
+    }
+
+    fun logAll() {
+        games.forEach{ info("${it}") }
+    }
+}

@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game_list.*
 import main.MainApp
+import models.GameModel
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.statmaster.R
 
-class GameListActivity : AppCompatActivity() {
+class GameListActivity : AppCompatActivity(), GameListener {
 
     lateinit var app: MainApp
 
@@ -23,7 +25,8 @@ class GameListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = GameAdapter(app.games)
+        //recyclerView.adapter = GameAdapter(app.games)
+        recyclerView.adapter = GameAdapter(app.games.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,5 +39,9 @@ class GameListActivity : AppCompatActivity() {
             R.id.item_add -> startActivityForResult<GameActivity>(0)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onGameClick(game: GameModel) {
+        startActivityForResult(intentFor<GameActivity>().putExtra("game_edit", game), 0)
     }
 }

@@ -1,26 +1,30 @@
 package main
 
 import android.app.Application
+import models.GameMemStore
 import models.GameModel
+import models.PlayerMemStore
 import models.PlayerModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
 class MainApp : Application(), AnkoLogger {
 
-    val games = ArrayList<GameModel>()
-    val players = ArrayList<PlayerModel>()
+    //val games = ArrayList<GameModel>()
+    val games = GameMemStore()
+    //val players = ArrayList<PlayerModel>()
+    val players = PlayerMemStore()
 
 
     override fun onCreate() {
         super.onCreate()
         info("Game started")
-        players.add(PlayerModel("Lee", "1"))
-        players.add(PlayerModel("Ross", "2"))
-        players.add(PlayerModel("David", "3"))
+        players.create(PlayerModel(1, "Lee", "1"))
+        players.create(PlayerModel(2,"Ross", "2"))
+        players.create(PlayerModel(3,"David", "3"))
 
-        games.add(GameModel("Match 1", "1:15 - 2:03"))
-        games.add(GameModel("Match 2", "2:13 - 4:10"))
-        games.add(GameModel("Match 3", "1:08 - 4:07"))
+        games.create(GameModel(1,"Match 1", "1:15 - 2:03"))
+        games.create(GameModel(2,"Match 2", "2:25 - 2:03"))
+        games.create(GameModel(3,"Match 3", "2:23 - 2:03"))
     }
 }

@@ -1,3 +1,10 @@
 package models
 
-data class PlayerModel(var name: String = "", var number: String = "")
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class PlayerModel(
+    var id: Long = 0,
+    var name: String = "",
+    var number: String = "") : Parcelable
