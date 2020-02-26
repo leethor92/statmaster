@@ -1,9 +1,13 @@
 package org.wit.statmaster.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import helpers.readImage
+import helpers.readImageFromPath
+import helpers.showImagePicker
 import kotlinx.android.synthetic.main.activity_player.*
 import kotlinx.android.synthetic.main.activity_player.view.*
 import main.MainApp
@@ -18,6 +22,7 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
 
     var player = PlayerModel()
     lateinit var app: MainApp
+    val IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +40,12 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
             player = intent.extras?.getParcelable<PlayerModel>("player_edit")!!
             playerName.setText(player.name)
             number.setText(player.number)
+            playerImage.setImageBitmap(readImageFromPath(this, player.image))
+            if (player.image != null) {
+                chooseImage.setText(R.string.change_player_image)
+            }
             btnAdd.setText(R.string.save_player)
+
         }
 
         btnAdd.setOnClickListener() {
@@ -54,6 +64,9 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
                 finish()
             }
         }
+        chooseImage.setOnClickListener {
+            showImagePicker(this, IMAGE_REQUEST)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,5 +81,18 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            IMAGE_REQUEST -> {
+                if (data != null) {
+                    player.image = data.getData().toString()
+                    playerImage.setImageBitmap(readImage(this, resultCode, data))
+                    chooseImage.setText(R.string.change_player_image)
+                }
+            }
+        }
     }
 }

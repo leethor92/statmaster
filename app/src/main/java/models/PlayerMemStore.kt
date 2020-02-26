@@ -13,7 +13,7 @@ class PlayerMemStore : PlayerStore, AnkoLogger {
 
     val players = ArrayList<PlayerModel>()
 
-    override fun findAll(): List<PlayerModel> {
+    override fun findAll(): ArrayList<PlayerModel> {
         return players
     }
 
@@ -28,6 +28,7 @@ class PlayerMemStore : PlayerStore, AnkoLogger {
         if (foundPlayer != null) {
             foundPlayer.name = player.name
             foundPlayer.number = player.number
+            foundPlayer.image = player.image
             logAll()
         }
     }

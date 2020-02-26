@@ -7,4 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class PlayerModel(
     var id: Long = 0,
     var name: String = "",
-    var number: String = "") : Parcelable
+    var number: String = "",
+    var image: String = "") : Parcelable

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.card_player.view.*
 import models.PlayerModel
 import org.wit.statmaster.R
@@ -40,6 +41,7 @@ class PlayerAdapter constructor(
         fun bind(player: PlayerModel, listener: PlayerListener) {
             itemView.playerName.text = player.name
             itemView.number.text = player.number
+            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, player.image))
             itemView.setOnClickListener { listener.onPlayerClick(player) }
         }
     }
