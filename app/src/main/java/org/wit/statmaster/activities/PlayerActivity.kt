@@ -24,27 +24,34 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
         setContentView(R.layout.activity_player)
         app = application as MainApp
 
+        var edit = false
+
         toolbarPlayer.title = title
         setSupportActionBar(toolbarPlayer)
         info("Player Activity started..")
 
         if (intent.hasExtra("player_edit")) {
+            edit = true
             player = intent.extras?.getParcelable<PlayerModel>("player_edit")!!
             playerName.setText(player.name)
             number.setText(player.number)
+            btnAdd.setText(R.string.save_player)
         }
 
         btnAdd.setOnClickListener() {
             player.name = playerName.text.toString()
             player.number = number.text.toString()
-            if (player.name.isNotEmpty()) {
-                app.players.create(player.copy())
+            if (player.name.isEmpty()) {
+                toast(R.string.enter_player_title)
+            } else {
+                if (edit) {
+                    app.players.update(player.copy())
+                } else {
+                    app.players.create(player.copy())
+                }
                 info("add Button Pressed: $player")
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
-            }
-            else {
-                toast ("Please Enter a title")
             }
         }
     }

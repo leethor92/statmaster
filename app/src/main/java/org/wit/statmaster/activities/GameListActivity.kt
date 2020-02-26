@@ -1,5 +1,6 @@
 package org.wit.statmaster.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -43,5 +44,10 @@ class GameListActivity : AppCompatActivity(), GameListener {
 
     override fun onGameClick(game: GameModel) {
         startActivityForResult(intentFor<GameActivity>().putExtra("game_edit", game), 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        recyclerView.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

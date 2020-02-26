@@ -9,4 +9,8 @@
     <string name="hint_playerName">Name</string>
     <string name="hint_playerNumber">Number</string>
     <string name="menu_cancelPlayer">Cancel</string>
+    <string name="enter_game_title"> Please enter a Game Title </string>
+    <string name="enter_player_title"> Please enter a Player Name </string>
+    <string name="save_player"> Save Player </string>
+    <string name="save_game"> Save Game </string>
 </resources>

@@ -1,5 +1,6 @@
 package org.wit.statmaster.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
@@ -24,6 +25,8 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
         setContentView(R.layout.activity_game)
         app = application as MainApp
 
+        var edit = false
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView1.layoutManager = layoutManager
         //recyclerView1.adapter = PlayerAdapter(app.players)
@@ -34,21 +37,28 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
         info("Player Activity started..")
 
         if (intent.hasExtra("game_edit")) {
+            edit = true
             game = intent.extras?.getParcelable<GameModel>("game_edit")!!
             gameTitle.setText(game.title)
             score.setText(game.score)
+            btnAdd.setText(R.string.save_game)
         }
 
         btnAdd.setOnClickListener() {
             game.title = gameTitle.text.toString()
             game.score = score.text.toString()
-            if (game.title.isNotEmpty()) {
-                app.games.create(game.copy())
+            if (game.title.isEmpty()) {
+                toast(R.string.enter_game_title)
+            } else {
+                if (edit) {
+                    app.games.update(game.copy())
+                }
+                else {
+                    app.games.create(game.copy())
+                }
                 info("add Button Pressed: $game")
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
-            } else {
-                toast("Please Enter a title")
             }
         }
     }
@@ -72,5 +82,10 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
 
     override fun onPlayerClick(player: PlayerModel) {
         startActivityForResult(intentFor<PlayerActivity>().putExtra("player_edit", player), 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        recyclerView1.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
