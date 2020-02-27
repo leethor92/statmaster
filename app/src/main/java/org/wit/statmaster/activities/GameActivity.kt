@@ -29,8 +29,7 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView1.layoutManager = layoutManager
-        //recyclerView1.adapter = PlayerAdapter(app.players)
-        recyclerView1.adapter = PlayerAdapter(app.players.findAll(), this)
+        loadPlayers()
 
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
@@ -71,8 +70,10 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_addPlayer -> startActivityForResult<PlayerActivity>(0)
-        }
-        when (item?.itemId) {
+            R.id.item_delete -> {
+                app.games.delete(game)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }
@@ -85,7 +86,16 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView1.adapter?.notifyDataSetChanged()
+        loadPlayers()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loadPlayers() {
+        showPlayers(app.players.findAll())
+    }
+
+    fun showPlayers (players: List<PlayerModel>) {
+        recyclerView1.adapter = PlayerAdapter(players, this)
+        recyclerView1.adapter?.notifyDataSetChanged()
     }
 }

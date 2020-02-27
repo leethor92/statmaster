@@ -32,6 +32,10 @@ class GameMemStore : GameStore, AnkoLogger {
         }
     }
 
+    override fun delete(game: GameModel) {
+        games.remove(game)
+    }
+
     fun logAll() {
         games.forEach{ info("${it}") }
     }

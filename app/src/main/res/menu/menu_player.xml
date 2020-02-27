@@ -7,4 +7,10 @@
         android:icon="@android:drawable/ic_delete"
         android:title="@string/menu_cancelPlayer"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/item_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/menu_deletePlayer"
+        app:showAsAction="always" />
 </menu>

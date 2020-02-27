@@ -16,4 +16,6 @@
     <string name="button_addImage"> Add Image </string>
     <string name="select_player_image">Select player image</string>
     <string name="change_player_image">Change player image</string>
+    <string name="menu_deleteGame">Delete</string>
+    <string name="menu_deletePlayer">Delete</string>
 </resources>

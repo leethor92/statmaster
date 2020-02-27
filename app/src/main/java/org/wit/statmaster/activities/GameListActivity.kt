@@ -26,8 +26,7 @@ class GameListActivity : AppCompatActivity(), GameListener {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        //recyclerView.adapter = GameAdapter(app.games)
-        recyclerView.adapter = GameAdapter(app.games.findAll(), this)
+        loadGames()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -47,7 +46,16 @@ class GameListActivity : AppCompatActivity(), GameListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+        loadGames()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loadGames() {
+        showGames(app.games.findAll())
+    }
+
+    fun showGames (games: List<GameModel>) {
+        recyclerView.adapter = GameAdapter(games, this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 }

@@ -79,6 +79,10 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
             R.id.item_cancelPlayer -> {
                 finish()
             }
+            R.id.item_delete -> {
+                app.players.delete(player)
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
