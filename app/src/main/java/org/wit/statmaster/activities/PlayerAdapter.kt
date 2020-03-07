@@ -42,6 +42,12 @@ class PlayerAdapter constructor(
             itemView.playerName.text = player.name
             itemView.number.text = player.number
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, player.image))
+            itemView.totalPoints.text = player.point.toString()
+            itemView.totalGoals.text = player.goal.toString()
+            itemView.totalWides.text = player.wide.toString()
+            itemView.total_passes.text = player.pass.toString()
+            itemView.total_possessions.text = player.possession.toString()
+            itemView.accuracy.text = player.accuracy.toString()
             itemView.setOnClickListener { listener.onPlayerClick(player) }
         }
     }

@@ -18,4 +18,20 @@
     <string name="change_player_image">Change player image</string>
     <string name="menu_deleteGame">Delete</string>
     <string name="menu_deletePlayer">Delete</string>
+    <string name="add_point">Add Point</string>
+    <string name="minus_point">Minus Point</string>
+    <string name="add_goal">Add Goal</string>
+    <string name="minus_goal">Minus Goal</string>
+    <string name="add_possession">Add Possession</string>
+    <string name="minus_possession">Minus Possession</string>
+    <string name="add_wide">Add Wide</string>
+    <string name="minus_wide">Minus Wide</string>
+    <string name="add_pass">Add Pass</string>
+    <string name="minus_pass">Minus Pass</string>
+    <string name="point_total">Point Total</string>
+    <string name="wide_total">Wide Total</string>
+    <string name="possession_total">Possession Total</string>
+    <string name="goal_total">Goal Total</string>
+    <string name="pass_total">Pass Total</string>
+    <string name="accuracy">Shooting Accuracy</string>
 </resources>

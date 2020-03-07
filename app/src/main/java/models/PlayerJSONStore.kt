@@ -48,6 +48,11 @@ class PlayerJSONStore : PlayerStore, AnkoLogger {
             foundPlayer.name = player.name
             foundPlayer.number = player.number
             foundPlayer.image = player.image
+            foundPlayer.point = player.point
+            foundPlayer.goal = player.goal
+            foundPlayer.wide = player.wide
+            foundPlayer.pass = player.pass
+            foundPlayer.possession = player.possession
         }
         serialize()
     }

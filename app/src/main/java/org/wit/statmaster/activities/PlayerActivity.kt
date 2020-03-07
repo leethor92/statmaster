@@ -51,6 +51,7 @@ class PlayerActivity : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener() {
             player.name = playerName.text.toString()
             player.number = number.text.toString()
+
             if (player.name.isEmpty()) {
                 toast(R.string.enter_player_title)
             } else {
