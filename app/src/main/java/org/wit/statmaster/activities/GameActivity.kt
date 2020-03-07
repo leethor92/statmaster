@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_list.*
+import kotlinx.android.synthetic.main.card_player.*
 import kotlinx.android.synthetic.main.card_player.view.*
 import main.MainApp
 import models.GameModel
@@ -19,6 +20,7 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
 
     var game = GameModel()
     lateinit var app: MainApp
+    var player = PlayerModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +62,7 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
                 finish()
             }
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -98,4 +101,5 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
         recyclerView1.adapter = PlayerAdapter(players, this)
         recyclerView1.adapter?.notifyDataSetChanged()
     }
+
 }

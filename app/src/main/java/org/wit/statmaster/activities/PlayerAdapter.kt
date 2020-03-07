@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import helpers.readImageFromPath
+import kotlinx.android.synthetic.main.card_player.*
 import kotlinx.android.synthetic.main.card_player.view.*
 import models.PlayerModel
+import org.jetbrains.anko.toast
 import org.wit.statmaster.R
 
 
@@ -36,18 +38,20 @@ class PlayerAdapter constructor(
 
     override fun getItemCount(): Int = players.size
 
+
+
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(player: PlayerModel, listener: PlayerListener) {
             itemView.playerName.text = player.name
             itemView.number.text = player.number
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, player.image))
-            itemView.totalPoints.text = player.point.toString()
-            itemView.totalGoals.text = player.goal.toString()
-            itemView.totalWides.text = player.wide.toString()
-            itemView.total_passes.text = player.pass.toString()
-            itemView.total_possessions.text = player.possession.toString()
-            itemView.accuracy.text = player.accuracy.toString()
+            itemView.totalPoints.text = (player.point.toString() + " points")
+            itemView.totalGoals.text = (player.goal.toString() + " goals")
+            itemView.totalWides.text = (player.wide.toString() + " wides")
+            itemView.total_passes.text = (player.pass.toString() + " passes")
+            itemView.total_possessions.text = (player.possession.toString() + " possessions")
+            itemView.accuracy.text = (player.accuracy.toString() + "%")
             itemView.setOnClickListener { listener.onPlayerClick(player) }
         }
     }
