@@ -15,6 +15,8 @@
         <activity android:name=".activities.PlayerActivity">
         </activity>
         <activity android:name=".activities.GameListActivity">
+        </activity>
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
