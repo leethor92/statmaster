@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.card_player.view.*
 import models.PlayerModel
 import org.jetbrains.anko.toast
 import org.wit.statmaster.R
+import kotlin.math.round
 
 
 interface PlayerListener {
@@ -21,7 +22,6 @@ class PlayerAdapter constructor(
     private var players: List<PlayerModel>,
     private val listener: PlayerListener
 ) : RecyclerView.Adapter<PlayerAdapter.MainHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -56,34 +56,48 @@ class PlayerAdapter constructor(
 
             itemView.add_point.setOnClickListener(View.OnClickListener {
                 player.point++
+                accuracyCalc(player)
+
+                itemView.accuracy.text = (player.accuracy.toString() + "%")
                 itemView.totalPoints.text = (player.point.toString() + " points")
             })
             itemView.minus_point.setOnClickListener(View.OnClickListener {
                 if(player.point > 0) {
                     player.point--
                 }
+                accuracyCalc(player)
+                itemView.accuracy.text = (player.accuracy.toString() + "%")
                 itemView.totalPoints.text = (player.point.toString() + " points")
+
             })
 
             itemView.add_goal.setOnClickListener(View.OnClickListener {
                 player.goal++
+                accuracyCalc(player)
+                itemView.accuracy.text = (player.accuracy.toString() + "%")
                 itemView.totalGoals.text = (player.goal.toString() + " goals")
             })
             itemView.minus_goal.setOnClickListener(View.OnClickListener {
                 if(player.goal > 0) {
                     player.goal--
                 }
+                accuracyCalc(player)
+                itemView.accuracy.text = (player.accuracy.toString() + "%")
                 itemView.totalGoals.text = (player.goal.toString() + " goals")
             })
 
             itemView.add_wide.setOnClickListener(View.OnClickListener {
                 player.wide++
+                accuracyCalc(player)
+                itemView.accuracy.text = (player.accuracy.toString() + "%")
                 itemView.totalWides.text = (player.wide.toString() + " wides")
             })
             itemView.minus_wide.setOnClickListener(View.OnClickListener {
                 if(player.wide > 0) {
                     player.wide--
                 }
+                accuracyCalc(player)
+                itemView.accuracy.text = (player.accuracy.toString() + "%")
                 itemView.totalWides.text = (player.wide.toString() + " wides")
             })
 
@@ -108,6 +122,13 @@ class PlayerAdapter constructor(
                 }
                 itemView.total_passes.text = (player.pass.toString() + " passes")
             })
+        }
+
+        private fun accuracyCalc(player: PlayerModel) {
+
+            if (player.point > 0 || player.goal > 0) {
+                player.accuracy = round((player.point.toDouble() + player.goal.toDouble()) / (player.goal.toDouble() + player.point.toDouble() + player.wide.toDouble()) * 100.toDouble())
+            }
         }
 
     }
