@@ -3,6 +3,7 @@ package org.wit.statmaster.activities
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.card_player.*
@@ -21,9 +22,10 @@ class PlayerAdapter constructor(
     private val listener: PlayerListener
 ) : RecyclerView.Adapter<PlayerAdapter.MainHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
-            LayoutInflater.from(parent?.context).inflate(
+            LayoutInflater.from(parent.context).inflate(
                 R.layout.card_player,
                 parent,
                 false
@@ -38,8 +40,6 @@ class PlayerAdapter constructor(
 
     override fun getItemCount(): Int = players.size
 
-
-
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(player: PlayerModel, listener: PlayerListener) {
@@ -53,6 +53,62 @@ class PlayerAdapter constructor(
             itemView.total_possessions.text = (player.possession.toString() + " possessions")
             itemView.accuracy.text = (player.accuracy.toString() + "%")
             itemView.setOnClickListener { listener.onPlayerClick(player) }
+
+            itemView.add_point.setOnClickListener(View.OnClickListener {
+                player.point++
+                itemView.totalPoints.text = (player.point.toString() + " points")
+            })
+            itemView.minus_point.setOnClickListener(View.OnClickListener {
+                if(player.point > 0) {
+                    player.point--
+                }
+                itemView.totalPoints.text = (player.point.toString() + " points")
+            })
+
+            itemView.add_goal.setOnClickListener(View.OnClickListener {
+                player.goal++
+                itemView.totalGoals.text = (player.goal.toString() + " goals")
+            })
+            itemView.minus_goal.setOnClickListener(View.OnClickListener {
+                if(player.goal > 0) {
+                    player.goal--
+                }
+                itemView.totalGoals.text = (player.goal.toString() + " goals")
+            })
+
+            itemView.add_wide.setOnClickListener(View.OnClickListener {
+                player.wide++
+                itemView.totalWides.text = (player.wide.toString() + " wides")
+            })
+            itemView.minus_wide.setOnClickListener(View.OnClickListener {
+                if(player.wide > 0) {
+                    player.wide--
+                }
+                itemView.totalWides.text = (player.wide.toString() + " wides")
+            })
+
+            itemView.add_possession.setOnClickListener(View.OnClickListener {
+                player.possession++
+                itemView.total_possessions.text = (player.possession.toString() + " possessions")
+            })
+            itemView.minus_possession.setOnClickListener(View.OnClickListener {
+                if(player.possession > 0) {
+                    player.possession--
+                }
+                itemView.total_possessions.text = (player.possession.toString() + " possessions")
+            })
+
+            itemView.add_pass.setOnClickListener(View.OnClickListener {
+                player.pass++
+                itemView.total_passes.text = (player.pass.toString() + " passes")
+            })
+            itemView.minus_pass.setOnClickListener(View.OnClickListener {
+                if(player.pass > 0) {
+                    player.pass--
+                }
+                itemView.total_passes.text = (player.pass.toString() + " passes")
+            })
         }
+
     }
 }

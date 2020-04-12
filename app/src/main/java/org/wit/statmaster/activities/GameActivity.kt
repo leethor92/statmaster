@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_game.*
@@ -48,6 +50,7 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
         btnAdd.setOnClickListener() {
             game.title = gameTitle.text.toString()
             game.score = score.text.toString()
+
             if (game.title.isEmpty()) {
                 toast(R.string.enter_game_title)
             } else {
@@ -64,7 +67,7 @@ class GameActivity : AppCompatActivity() , AnkoLogger, PlayerListener  {
         }
 
     }
-
+    
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_match, menu)
         return super.onCreateOptionsMenu(menu)
