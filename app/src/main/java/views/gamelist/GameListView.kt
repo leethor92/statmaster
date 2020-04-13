@@ -12,21 +12,22 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.statmaster.R
 
-class GameListActivity : AppCompatActivity(), GameListener {
+class GameListView : AppCompatActivity(), GameListener {
 
-    lateinit var app: MainApp
+    lateinit var presenter: GameListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_list)
-        app = application as MainApp
-
         toolbar.title = title
         setSupportActionBar(toolbar)
 
+        presenter = GameListPresenter(this)
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        loadGames()
+        recyclerView.adapter =
+            GameAdapter(presenter.getGames(), this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,26 +37,17 @@ class GameListActivity : AppCompatActivity(), GameListener {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.item_add -> startActivityForResult<GameActivity>(0)
+            R.id.item_add -> presenter.doAddGame()
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onGameClick(game: GameModel) {
-        startActivityForResult(intentFor<GameActivity>().putExtra("game_edit", game), 0)
+        presenter.doEditGame(game)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        loadGames()
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
-    private fun loadGames() {
-        showGames(app.games.findAll())
-    }
-
-    fun showGames (games: List<GameModel>) {
-        recyclerView.adapter = GameAdapter(games, this)
         recyclerView.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
