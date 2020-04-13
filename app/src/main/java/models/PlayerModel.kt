@@ -2,9 +2,11 @@ package models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import models.GameModel
 
 @Parcelize
 data class PlayerModel(
+    var gameId: Long = 0,
     var id: Long = 0,
     var name: String = "",
     var number: String = "",

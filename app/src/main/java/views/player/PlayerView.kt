@@ -1,4 +1,4 @@
-package views
+package views.player
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +11,10 @@ import models.PlayerModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import org.wit.statmaster.R
-import org.wit.statmaster.activities.PlayerPresenter
+import views.BasePresenter
+import views.BaseView
 
-class PlayerView : AppCompatActivity(), AnkoLogger {
+class PlayerView : BaseView(), AnkoLogger {
 
     lateinit var presenter: PlayerPresenter
     var player = PlayerModel()
@@ -21,35 +22,28 @@ class PlayerView : AppCompatActivity(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
-        toolbarPlayer.title = title
-        setSupportActionBar(toolbarPlayer)
 
-        presenter = PlayerPresenter(this)
+        init(toolbarPlayer)
 
-        btnAdd.setOnClickListener() {
-            if (playerName.text.toString().isEmpty()) {
-                toast(R.string.enter_player_title)
-            } else {
-                presenter.doAddOrSave(playerName.text.toString(), number.text.toString())
-            }
-        }
+        presenter = initPresenter (PlayerPresenter(this)) as PlayerPresenter
 
         chooseImage.setOnClickListener { presenter.doSelectImage() }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_player, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
 
-    fun showPlayer(player: PlayerModel) {
+
+    override fun showPlayer(player: PlayerModel) {
         playerName.setText(player.name)
         number.setText(player.number)
         playerImage.setImageBitmap(readImageFromPath(this, player.image))
         if (player.image != null) {
             chooseImage.setText(R.string.change_player_image)
         }
-        btnAdd.setText(R.string.save_player)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_player, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -59,6 +53,13 @@ class PlayerView : AppCompatActivity(), AnkoLogger {
             }
             R.id.item_delete -> {
                 presenter.doDelete()
+            }
+            R.id.item_save -> {
+                if (playerName.text.toString().isEmpty()) {
+                    toast(R.string.enter_player_title)
+                } else {
+                    presenter.doAddOrSave(playerName.text.toString(), number.text.toString())
+                }
             }
         }
         return super.onOptionsItemSelected(item)

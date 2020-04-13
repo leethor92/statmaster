@@ -6,8 +6,8 @@ import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import org.wit.statmaster.R
+import views.gamelist.GameListView
 
 class SplashActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         // Using a handler to delay loading the MainActivity
         Handler().postDelayed({
 
-            startActivity(Intent(this, GameListActivity::class.java))
+            startActivity(Intent(this, GameListView::class.java))
 
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 

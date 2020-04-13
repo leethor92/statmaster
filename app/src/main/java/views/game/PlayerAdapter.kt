@@ -1,15 +1,12 @@
-package org.wit.statmaster.activities
+package views.game
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import helpers.readImageFromPath
-import kotlinx.android.synthetic.main.card_player.*
 import kotlinx.android.synthetic.main.card_player.view.*
 import models.PlayerModel
-import org.jetbrains.anko.toast
 import org.wit.statmaster.R
 import kotlin.math.round
 

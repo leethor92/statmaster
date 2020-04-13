@@ -1,4 +1,4 @@
-package org.wit.statmaster.activities
+package views.gamelist
 
 import android.view.LayoutInflater
 import android.view.View

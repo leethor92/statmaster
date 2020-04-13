@@ -1,21 +1,20 @@
-package org.wit.statmaster.activities
+package views.player
 
 import android.content.Intent
 import helpers.showImagePicker
 import main.MainApp
 import models.PlayerModel
-import views.player.PlayerView
+import views.BasePresenter
+import views.BaseView
+import views.IMAGE_REQUEST
 
-class PlayerPresenter(val view: PlayerView) {
-
-    val IMAGE_REQUEST = 1
+class PlayerPresenter(view: BaseView) : BasePresenter(view) {
 
     var player = PlayerModel()
-    var app: MainApp
+
     var edit = false;
 
     init {
-        app = view.application as MainApp
         if (view.intent.hasExtra("player_edit")) {
             edit = true
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
@@ -31,27 +30,29 @@ class PlayerPresenter(val view: PlayerView) {
         } else {
             app.players.create(player)
         }
-        view.finish()
+        view?.finish()
     }
 
     fun doCancel() {
-        view.finish()
+        view?.finish()
     }
 
     fun doDelete() {
         app.players.delete(player)
-        view.finish()
+        view?.finish()
     }
 
     fun doSelectImage() {
-        showImagePicker(view, IMAGE_REQUEST)
+        view?.let {
+            showImagePicker(view!!, IMAGE_REQUEST)
+        }
     }
 
     fun doActivityResult(requestCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 player.image = data.data.toString()
-                view.showPlayer(player)
+                view?.showPlayer(player)
             }
         }
     }

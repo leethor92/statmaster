@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PlayerActivity">
+    tools:context="views.player.PlayerView">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -84,20 +84,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@android:drawable/sym_def_app_icon" />
-
-
-                <Button
-                    android:id="@+id/btnAdd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:stateListAnimator="@null"
-                    android:text="@string/button_addPlayer"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
             </LinearLayout>
         </ScrollView>
 

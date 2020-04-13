@@ -1,4 +1,4 @@
-package org.wit.statmaster.activities
+package views.gamelist
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,27 +6,29 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game_list.*
-import main.MainApp
 import models.GameModel
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivityForResult
 import org.wit.statmaster.R
+import views.BaseView
 
-class GameListView : AppCompatActivity(), GameListener {
+class GameListView : BaseView(), GameListener {
 
     lateinit var presenter: GameListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_list)
-        toolbar.title = title
+
         setSupportActionBar(toolbar)
 
-        presenter = GameListPresenter(this)
+        presenter = initPresenter(GameListPresenter(this)) as GameListPresenter
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter =
-            GameAdapter(presenter.getGames(), this)
+        presenter.loadGames()
+    }
+
+    override fun showGames(games: List<GameModel>) {
+        recyclerView.adapter = GameAdapter(games, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
 
@@ -47,7 +49,7 @@ class GameListView : AppCompatActivity(), GameListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+        presenter.loadGames()
         super.onActivityResult(requestCode, resultCode, data)
     }
 }
