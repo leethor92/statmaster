@@ -36,4 +36,9 @@
     <string name="accuracy">Shooting Accuracy</string>
     <string name="menu_saveGame">Save</string>
     <string name="menu_savePlayer">Save</string>
+    <string name="playerPoints">Total Points: </string>
+    <string name="playerGoals">Total Goals: </string>
+    <string name="playerWides">Total Wides: </string>
+    <string name="playerPossessions">Total Possessions: </string>
+    <string name="playerPasses">Total Passes: </string>
 </resources>

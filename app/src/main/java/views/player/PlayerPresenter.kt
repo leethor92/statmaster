@@ -24,7 +24,7 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun doAddOrSave(name: String, number: String, points: Int, goals: Int, wides: Int, possessions: Int, passess: Int) {
+    fun doAddOrSave(name: String, number: String, points: Int, goals: Int, wides: Int, possessions: Int, passes: Int) {
         doAsync {
             player.name = name
             player.number = number
@@ -32,7 +32,7 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
             player.goal = goals
             player.wide = wides
             player.possession = possessions
-            player.pass = passess
+            player.pass = passes
         if (edit) {
             app.players.update(player)
         } else {
