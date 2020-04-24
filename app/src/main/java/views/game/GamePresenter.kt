@@ -1,10 +1,13 @@
 package org.wit.placemark.activities
 
+import android.view.View
 import main.MainApp
 import models.GameModel
 import models.PlayerModel
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.uiThread
 import org.wit.statmaster.activities.GameView
 import views.BasePresenter
 import views.BaseView
@@ -39,12 +42,16 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
     fun doAddOrSave(gameTitle: String, score: String) {
         game.title = gameTitle
         game.score = score
-        if (edit) {
-            app.games.update(game)
-        } else {
-            app.games.create(game)
+        doAsync {
+            if (edit) {
+                app.games.update(game)
+            } else {
+                app.games.create(game)
+            }
+            uiThread {
+                view?.finish()
+            }
         }
-        view?.finish()
     }
 
     fun doCancel() {
@@ -52,11 +59,20 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doDelete() {
-        app.games.delete(game)
-        view?.finish()
+        doAsync {
+            app.games.delete(game)
+            uiThread {
+                view?.finish()
+            }
+        }
     }
 
     fun loadPlayers() {
-        view?.showPlayers(app.players.findAll())
+        doAsync {
+            val players = app.players.findAll()
+            uiThread {
+                view?.showPlayers(players)
+            }
+        }
     }
 }

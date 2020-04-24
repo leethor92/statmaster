@@ -17,6 +17,11 @@ class PlayerMemStore : PlayerStore, AnkoLogger {
         return players
     }
 
+    override fun findById(id:Long) : PlayerModel? {
+        val foundPlayer: PlayerModel? = players.find { it.id == id }
+        return foundPlayer
+    }
+
     override fun create(player: PlayerModel) {
         player.id = getPId()
         players.add(player)

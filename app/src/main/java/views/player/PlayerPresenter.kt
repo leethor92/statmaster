@@ -4,6 +4,8 @@ import android.content.Intent
 import helpers.showImagePicker
 import main.MainApp
 import models.PlayerModel
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import views.BasePresenter
 import views.BaseView
 import views.IMAGE_REQUEST
@@ -22,15 +24,24 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun doAddOrSave(name: String, number: String) {
-        player.name = name
-        player.number = number
+    fun doAddOrSave(name: String, number: String, points: Int, goals: Int, wides: Int, possessions: Int, passess: Int) {
+        doAsync {
+            player.name = name
+            player.number = number
+            player.point = points
+            player.goal = goals
+            player.wide = wides
+            player.possession = possessions
+            player.pass = passess
         if (edit) {
             app.players.update(player)
         } else {
             app.players.create(player)
         }
-        view?.finish()
+            uiThread {
+                view?.finish()
+            }
+        }
     }
 
     fun doCancel() {
@@ -38,8 +49,12 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doDelete() {
-        app.players.delete(player)
-        view?.finish()
+        doAsync {
+            app.players.delete(player)
+            uiThread {
+                view?.finish()
+            }
+        }
     }
 
     fun doSelectImage() {

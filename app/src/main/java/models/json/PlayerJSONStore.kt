@@ -34,12 +34,16 @@ class PlayerJSONStore : PlayerStore, AnkoLogger {
         return players
     }
 
+    override fun findById(id:Long) : PlayerModel? {
+        val foundPlayer: PlayerModel? = players.find { it.id == id }
+        return foundPlayer
+    }
+
     override fun create(player: PlayerModel) {
         player.id = generateRandomId()
         players.add(player)
         serialize()
     }
-
 
     override fun update(player: PlayerModel) {
         val playersList = findAll() as ArrayList<PlayerModel>

@@ -2,8 +2,10 @@ package views.gamelist
 
 import main.MainApp
 import models.GameModel
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.uiThread
 import org.wit.statmaster.activities.GameView
 import views.BasePresenter
 import views.BaseView
@@ -19,6 +21,11 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun loadGames(){
-        view?.showGames(app.games.findAll())
+        doAsync {
+            val games = app.games.findAll()
+            uiThread {
+                view?.showGames(games)
+            }
+        }
     }
 }

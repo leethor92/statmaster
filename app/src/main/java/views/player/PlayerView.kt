@@ -35,6 +35,11 @@ class PlayerView : BaseView(), AnkoLogger {
     override fun showPlayer(player: PlayerModel) {
         playerName.setText(player.name)
         number.setText(player.number)
+        points.setText(player.point.toString())
+        goals.setText(player.goal.toString())
+        wides.setText(player.wide.toString())
+        possessions.setText(player.possession.toString())
+        passess.setText(player.pass.toString())
         playerImage.setImageBitmap(readImageFromPath(this, player.image))
         if (player.image != null) {
             chooseImage.setText(R.string.change_player_image)
@@ -58,7 +63,8 @@ class PlayerView : BaseView(), AnkoLogger {
                 if (playerName.text.toString().isEmpty()) {
                     toast(R.string.enter_player_title)
                 } else {
-                    presenter.doAddOrSave(playerName.text.toString(), number.text.toString())
+                    presenter.doAddOrSave(playerName.text.toString(), number.text.toString(), Integer.parseInt(points.text.toString()), Integer.parseInt(goals.text.toString()),
+                        Integer.parseInt(wides.text.toString()), Integer.parseInt(passess.text.toString()), Integer.parseInt(possessions.text.toString()))
                 }
             }
         }

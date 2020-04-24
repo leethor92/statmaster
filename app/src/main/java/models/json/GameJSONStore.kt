@@ -34,6 +34,11 @@ class GameJSONStore : GameStore, AnkoLogger {
         return games
     }
 
+    override fun findById(id:Long) : GameModel? {
+        val foundGame: GameModel? = games.find { it.id == id }
+        return foundGame
+    }
+
     override fun create(game: GameModel) {
         game.id = generateRandomId()
         games.add(game)

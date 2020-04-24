@@ -123,9 +123,7 @@ class PlayerAdapter constructor(
 
         private fun accuracyCalc(player: PlayerModel) {
 
-            if (player.point > 0 || player.goal > 0) {
                 player.accuracy = round((player.point.toDouble() + player.goal.toDouble()) / (player.goal.toDouble() + player.point.toDouble() + player.wide.toDouble()) * 100.toDouble())
-            }
         }
 
     }

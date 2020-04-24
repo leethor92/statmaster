@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.card_player.*
+import kotlinx.android.synthetic.main.card_player.view.*
 import main.MainApp
 import models.GameModel
 import models.PlayerModel
@@ -15,6 +17,7 @@ import org.wit.statmaster.R
 import views.BaseView
 import views.game.PlayerAdapter
 import views.game.PlayerListener
+import kotlin.math.round
 
 class GameView : BaseView() , AnkoLogger, PlayerListener {
 

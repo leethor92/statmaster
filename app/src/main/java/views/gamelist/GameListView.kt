@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game_list.*
 import models.GameModel
+import models.PlayerModel
 import org.wit.statmaster.R
 import views.BaseView
 
@@ -52,4 +53,5 @@ class GameListView : BaseView(), GameListener {
         presenter.loadGames()
         super.onActivityResult(requestCode, resultCode, data)
     }
+
 }

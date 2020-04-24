@@ -5,4 +5,5 @@ interface GameStore {
     fun create(game: GameModel)
     fun update(game: GameModel)
     fun delete(game: GameModel)
+    fun findById(id:Long) : GameModel?
 }

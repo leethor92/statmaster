@@ -1,13 +1,15 @@
 package models
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import models.GameModel
 
 @Parcelize
+@Entity
 data class PlayerModel(
-    var gameId: Long = 0,
-    var id: Long = 0,
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var name: String = "",
     var number: String = "",
     var image: String = "",

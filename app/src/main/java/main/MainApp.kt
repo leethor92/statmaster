@@ -2,6 +2,8 @@ package main
 
 import android.app.Application
 import models.*
+import models.room.GameStoreRoom
+import models.room.PlayerStoreRoom
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
@@ -16,9 +18,12 @@ class MainApp : Application(), AnkoLogger {
     override fun onCreate() {
         super.onCreate()
         //games = GameMemStore()
-        games = GameJSONStore(applicationContext)
+        //games = GameJSONStore(applicationContext)
+        games = GameStoreRoom(applicationContext)
+
         //players = PlayerMemStore()
-        players = PlayerJSONStore(applicationContext)
+        //players = PlayerJSONStore(applicationContext)
+        players = PlayerStoreRoom(applicationContext)
         info("Game started")
     }
 }
