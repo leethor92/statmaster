@@ -33,6 +33,7 @@ class GameMemStore : GameStore, AnkoLogger {
         if (foundGame != null) {
             foundGame.title = game.title
             foundGame.score = game.score
+            foundGame.win = game.win
             logAll()
         }
     }

@@ -41,4 +41,5 @@
     <string name="playerWides">Total Wides: </string>
     <string name="playerPossessions">Total Possessions: </string>
     <string name="playerPasses">Total Passes: </string>
+    <string name="checkbox_win">Game Won</string>
 </resources>

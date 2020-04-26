@@ -39,9 +39,10 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
         view?.startActivityForResult(view?.intentFor<PlayerView>()?.putExtra("player_edit", player), 0)
     }
 
-    fun doAddOrSave(gameTitle: String, score: String) {
+    fun doAddOrSave(gameTitle: String, score: String, winCheckbox: Boolean) {
         game.title = gameTitle
         game.score = score
+        game.win = winCheckbox
         doAsync {
             if (edit) {
                 app.games.update(game)

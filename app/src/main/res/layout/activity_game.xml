@@ -66,6 +66,14 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
+                <CheckBox
+                    android:id="@+id/winCheckbox"
+                    android:layout_width="116dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:text="@string/checkbox_win" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView1"
                     android:layout_width="match_parent"

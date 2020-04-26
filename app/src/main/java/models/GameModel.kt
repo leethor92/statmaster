@@ -10,4 +10,5 @@ import kotlinx.android.parcel.Parcelize
 data class GameModel(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var title: String = "",
-    var score: String = "") : Parcelable
+    var score: String = "",
+    var win: Boolean = false) : Parcelable

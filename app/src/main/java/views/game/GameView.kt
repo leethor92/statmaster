@@ -40,6 +40,7 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
     override fun showGame(game: GameModel) {
         gameTitle.setText(game.title)
         score.setText(game.score)
+        winCheckbox.isChecked = game.win
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -60,7 +61,7 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
                 if (gameTitle.text.toString().isEmpty()) {
                     toast(R.string.enter_game_title)
                 } else {
-                    presenter.doAddOrSave(gameTitle.text.toString(), score.text.toString())
+                    presenter.doAddOrSave(gameTitle.text.toString(), score.text.toString(), winCheckbox.isChecked)
                 }
             }
         }
