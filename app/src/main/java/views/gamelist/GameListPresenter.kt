@@ -1,5 +1,6 @@
 package views.gamelist
 
+import com.google.firebase.auth.FirebaseAuth
 import main.MainApp
 import models.GameModel
 import org.jetbrains.anko.doAsync
@@ -31,6 +32,7 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doLogout() {
+        FirebaseAuth.getInstance().signOut()
         view?.navigateTo(VIEW.LOGIN)
     }
 }
