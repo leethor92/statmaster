@@ -6,4 +6,5 @@ interface PlayerStore {
     fun update(player: PlayerModel)
     fun delete(player: PlayerModel)
     fun findById(id:Long) : PlayerModel?
+    fun clear ()
 }

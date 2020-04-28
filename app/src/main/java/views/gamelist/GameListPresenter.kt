@@ -34,6 +34,7 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
     fun doLogout() {
         FirebaseAuth.getInstance().signOut()
         app.games.clear()
+        app.players.clear()
         view?.navigateTo(VIEW.LOGIN)
     }
 }

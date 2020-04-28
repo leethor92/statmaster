@@ -2,6 +2,7 @@ package views.login
 
 import com.google.firebase.auth.FirebaseAuth
 import models.firebase.GameFireStore
+import models.firebase.PlayerFireStore
 import org.jetbrains.anko.toast
 import views.BasePresenter
 import views.BaseView
@@ -11,10 +12,15 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
 
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
     var gameFireStore: GameFireStore? = null
+    var playerFireStore: PlayerFireStore? = null
 
     init {
-        if (app.games is GameFireStore) {
+        if (app.games is GameFireStore )  {
             gameFireStore = app.games as GameFireStore
+        }
+
+        if (app.players is PlayerFireStore) {
+            playerFireStore = app.players as PlayerFireStore
         }
     }
 
@@ -27,10 +33,25 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
                         view?.hideProgress()
                         view?.navigateTo(VIEW.LIST)
                     }
-                } else {
+                }
+                else
+                {
                     view?.hideProgress()
                     view?.navigateTo(VIEW.LIST)
                 }
+
+                if (playerFireStore != null ) {
+                    playerFireStore!!.fetchPlayers {
+                        view?.hideProgress()
+                        view?.navigateTo(VIEW.LIST)
+                    }
+                }
+                else
+                {
+                    view?.hideProgress()
+                    view?.navigateTo(VIEW.LIST)
+                }
+
             } else {
                 view?.hideProgress()
                 view?.toast("Sign Up Failed: ${task.exception?.message}")

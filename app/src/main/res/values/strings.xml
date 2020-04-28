@@ -4,7 +4,7 @@
     <string name="hint_gameTitle">Game Title</string>
     <string name="hint_gameScore">Score</string>
     <string name="menu_addGame">Add</string>
-    <string name="menu_addPlayer">Add</string>
+    <string name="menu_addPlayer">Add Player</string>
     <string name="button_addPlayer">Add Player</string>
     <string name="hint_playerName">Name</string>
     <string name="hint_playerNumber">Number</string>

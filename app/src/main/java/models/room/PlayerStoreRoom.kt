@@ -35,4 +35,7 @@ class PlayerStoreRoom(val context: Context) : PlayerStore {
     override fun delete(player: PlayerModel) {
         dao.deletePlayer(player)
     }
+
+    override fun clear() {
+    }
 }

@@ -50,4 +50,8 @@ class PlayerMemStore : PlayerStore, AnkoLogger {
     fun logAll() {
         players.forEach{ info("${it}") }
     }
+
+    override fun clear() {
+        players.clear()
+    }
 }
