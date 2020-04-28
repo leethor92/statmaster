@@ -19,7 +19,7 @@ class GameListView : BaseView(), GameListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_list)
 
-        setSupportActionBar(toolbar)
+        init(toolbar, false)
 
         presenter = initPresenter(GameListPresenter(this)) as GameListPresenter
 
@@ -41,6 +41,7 @@ class GameListView : BaseView(), GameListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> presenter.doAddGame()
+            R.id.item_logout ->presenter.doLogout()
         }
         return super.onOptionsItemSelected(item)
     }

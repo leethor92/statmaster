@@ -9,6 +9,7 @@ import org.jetbrains.anko.uiThread
 import org.wit.statmaster.activities.GameView
 import views.BasePresenter
 import views.BaseView
+import views.VIEW
 
 class GameListPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -27,5 +28,9 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
                 view?.showGames(games)
             }
         }
+    }
+
+    fun doLogout() {
+        view?.navigateTo(VIEW.LOGIN)
     }
 }

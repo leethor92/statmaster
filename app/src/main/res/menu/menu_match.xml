@@ -6,22 +6,22 @@
         android:id="@+id/item_save"
         android:icon="@android:drawable/ic_menu_save"
         android:title="@string/menu_saveGame"
-        app:showAsAction="always" />
+        app:showAsAction="never"/>
     <item
         android:id="@+id/item_cancel"
         android:icon="@android:drawable/ic_delete"
         android:title="@string/menu_cancelPlayer"
-        app:showAsAction="always" />
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/item_delete"
         android:icon="@android:drawable/ic_menu_delete"
         android:title="@string/menu_deleteGame"
-        app:showAsAction="always" />
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/item_addPlayer"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/menu_addPlayer"
-        app:showAsAction="always" />
+        app:showAsAction="never"/>
 </menu>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "777614068756",
+    "firebase_url": "https://statmaster-project.firebaseio.com",
+    "project_id": "statmaster-project",
+    "storage_bucket": "statmaster-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777614068756:android:89caea6bd7a96201c8ab01",
+        "android_client_info": {
+          "package_name": "org.wit.statmaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777614068756-o53o3p777d28h7nfgjpou9tkk06llosv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.wit.statmaster",
+            "certificate_hash": "9659e327e0bfe2870ba11f848916a2f3936b9a68"
+          }
+        },
+        {
+          "client_id": "777614068756-91c68gq3mqlta7cijpi2ctvfb737ipu9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaMgtKEEM80bU-dtqDi7f2-Jnd_EODb_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777614068756-91c68gq3mqlta7cijpi2ctvfb737ipu9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

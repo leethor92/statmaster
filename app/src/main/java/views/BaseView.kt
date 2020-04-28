@@ -9,12 +9,13 @@ import models.PlayerModel
 import org.jetbrains.anko.AnkoLogger
 import org.wit.statmaster.activities.GameView
 import views.gamelist.GameListView
+import views.login.LoginView
 import views.player.PlayerView
 
 val IMAGE_REQUEST = 1
 
 enum class VIEW {
-    GAME, PLAYER, LIST
+    GAME, PLAYER, LIST, LOGIN
 }
 
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -26,6 +27,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.GAME -> intent = Intent(this, GameView::class.java)
             VIEW.PLAYER -> intent = Intent(this, PlayerView::class.java)
             VIEW.LIST -> intent = Intent(this, GameListView::class.java)
+            VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)
@@ -38,9 +40,10 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         return presenter
     }
 
-    fun init(toolbar: Toolbar) {
+    fun init(toolbar: Toolbar, upEnabled: Boolean) {
         toolbar.title = title
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
 
     override fun onDestroy() {

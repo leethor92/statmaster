@@ -42,5 +42,9 @@
     <string name="playerPossessions">Total Possessions: </string>
     <string name="playerPasses">Total Passes: </string>
     <string name="checkbox_win">Game Won</string>
-    <string name="title_activity_login"> Signup/Login to Statmaster</string>
+    <string name="title_activity_login"> Signup/Login to StatMaster</string>
+    <string name="title_activity_game_list">Games</string>
+    <string name="title_activity_player">Player</string>
+    <string name="title_activity_game">Game</string>
+    <string name="menu_logout">Logout</string>
 </resources>

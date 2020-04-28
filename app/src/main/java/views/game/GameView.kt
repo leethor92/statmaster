@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.activity_game_list.*
 import kotlinx.android.synthetic.main.card_player.*
 import kotlinx.android.synthetic.main.card_player.view.*
 import main.MainApp
@@ -28,7 +29,7 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        init(toolbarAdd)
+        super.init(toolbarAdd, true);
 
         presenter = initPresenter (GamePresenter(this)) as GamePresenter
 

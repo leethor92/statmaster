@@ -24,13 +24,23 @@
                 android:launchMode="singleTop">
             </activity>
 
-            <activity android:name=".activities.GameView">
+            <activity android:name=".activities.GameView"
+                android:label="@string/title_activity_game_list">
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="views.gamelist.GameListView" />
             </activity>
 
-            <activity android:name="views.player.PlayerView">
+            <activity android:name="views.player.PlayerView"
+                android:label="@string/title_activity_player">
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".activities.GameView" />
             </activity>
 
-            <activity android:name="views.gamelist.GameListView">
+            <activity android:name="views.gamelist.GameListView"
+                android:label="@string/title_activity_game_list"
+                android:launchMode="singleTop">
             </activity>
 
 
