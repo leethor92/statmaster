@@ -45,4 +45,8 @@ class GameMemStore : GameStore, AnkoLogger {
     fun logAll() {
         games.forEach{ info("${it}") }
     }
+
+    override fun clear() {
+        games.clear()
+    }
 }

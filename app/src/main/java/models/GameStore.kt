@@ -6,4 +6,5 @@ interface GameStore {
     fun update(game: GameModel)
     fun delete(game: GameModel)
     fun findById(id:Long) : GameModel?
+    fun clear ()
 }

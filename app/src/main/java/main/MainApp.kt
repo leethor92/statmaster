@@ -2,6 +2,7 @@ package main
 
 import android.app.Application
 import models.*
+import models.firebase.GameFireStore
 import models.room.GameStoreRoom
 import models.room.PlayerStoreRoom
 import org.jetbrains.anko.AnkoLogger
@@ -19,7 +20,8 @@ class MainApp : Application(), AnkoLogger {
         super.onCreate()
         //games = GameMemStore()
         //games = GameJSONStore(applicationContext)
-        games = GameStoreRoom(applicationContext)
+        //games = GameStoreRoom(applicationContext)
+        games = GameFireStore(applicationContext)
 
         //players = PlayerMemStore()
         //players = PlayerJSONStore(applicationContext)

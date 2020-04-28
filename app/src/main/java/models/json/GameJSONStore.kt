@@ -71,4 +71,8 @@ class GameJSONStore : GameStore, AnkoLogger {
         val jsonString = read(context, JSON_FILE)
         games = Gson().fromJson(jsonString, listType)
     }
+
+    override fun clear() {
+        games.clear()
+    }
 }

@@ -36,4 +36,7 @@ class GameStoreRoom(val context: Context) : GameStore {
     override fun delete(game: GameModel) {
         dao.deleteGame(game)
     }
+
+    override fun clear() {
+    }
 }

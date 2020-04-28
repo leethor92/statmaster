@@ -10,6 +10,7 @@ import models.GameModel
 @Entity
 data class PlayerModel(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
+    var fbpId : String = "",
     var name: String = "",
     var number: String = "",
     var image: String = "",
