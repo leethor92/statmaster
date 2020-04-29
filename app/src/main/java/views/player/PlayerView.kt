@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.activity_player.*
 import models.PlayerModel
@@ -40,7 +41,7 @@ class PlayerView : BaseView(), AnkoLogger {
         wides.setText(player.wide.toString())
         possessions.setText(player.possession.toString())
         passes.setText(player.pass.toString())
-        playerImage.setImageBitmap(readImageFromPath(this, player.image))
+        Glide.with(this).load(player.image).into(playerImage);
         if (player.image != null) {
             chooseImage.setText(R.string.change_player_image)
         }

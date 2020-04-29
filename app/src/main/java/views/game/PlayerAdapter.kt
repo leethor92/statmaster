@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.card_player.view.*
 import models.PlayerModel
@@ -42,7 +43,7 @@ class PlayerAdapter constructor(
         fun bind(player: PlayerModel, listener: PlayerListener) {
             itemView.playerName.text = player.name
             itemView.number.text = player.number
-            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, player.image))
+            Glide.with(itemView.context).load(player.image).into(itemView.imageIcon);
             itemView.totalPoints.text = (player.point.toString() + " points")
             itemView.totalGoals.text = (player.goal.toString() + " goals")
             itemView.totalWides.text = (player.wide.toString() + " wides")
