@@ -18,4 +18,9 @@
         android:title="@string/menu_logout"
         android:visible="true"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/item_wonGames"
+        android:title="Show Won Games"
+        android:checkable="true"/>
 </menu>

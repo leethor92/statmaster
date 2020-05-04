@@ -15,6 +15,8 @@ class GameListView : BaseView(), GameListener {
 
     lateinit var presenter: GameListPresenter
 
+    var showWonGames = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_list)
@@ -43,6 +45,10 @@ class GameListView : BaseView(), GameListener {
             R.id.item_add -> presenter.doAddGame()
             R.id.item_logout ->presenter.doLogout()
             R.id.item_settings ->presenter.doSettings()
+            R.id.item_wonGames -> {
+                item.isChecked = !item.isChecked
+                presenter.doShowWonGames(item.isChecked)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

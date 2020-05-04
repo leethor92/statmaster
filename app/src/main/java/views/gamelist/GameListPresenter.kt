@@ -27,6 +27,10 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
         view?.startActivityForResult(view?.intentFor<GameView>()?.putExtra("game_edit", game), 0)
     }
 
+    fun doShowWonGames(checked: Boolean){
+        view?.showGames(if (checked) app.games.findAll().filter { it.win } else app.games.findAll())
+    }
+
     fun loadGames(){
         doAsync {
             val games = app.games.findAll()
