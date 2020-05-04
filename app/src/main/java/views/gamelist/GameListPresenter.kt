@@ -11,11 +11,16 @@ import org.wit.statmaster.activities.GameView
 import views.BasePresenter
 import views.BaseView
 import views.VIEW
+import views.settings.SettingsView
 
 class GameListPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doAddGame() {
         view?.startActivityForResult<GameView>(0)
+    }
+
+    fun doSettings() {
+        view?.startActivityForResult<SettingsView>(0)
     }
 
     fun doEditGame(game: GameModel) {

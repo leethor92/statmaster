@@ -12,11 +12,12 @@ import org.wit.statmaster.activities.GameView
 import views.gamelist.GameListView
 import views.login.LoginView
 import views.player.PlayerView
+import views.settings.SettingsView
 
 val IMAGE_REQUEST = 1
 
 enum class VIEW {
-    GAME, PLAYER, LIST, LOGIN
+    GAME, PLAYER, LIST, LOGIN, SETTINGS
 }
 
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
@@ -29,6 +30,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.PLAYER -> intent = Intent(this, PlayerView::class.java)
             VIEW.LIST -> intent = Intent(this, GameListView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
+            VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)

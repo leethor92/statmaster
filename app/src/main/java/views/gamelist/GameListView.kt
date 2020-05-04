@@ -42,6 +42,7 @@ class GameListView : BaseView(), GameListener {
         when (item?.itemId) {
             R.id.item_add -> presenter.doAddGame()
             R.id.item_logout ->presenter.doLogout()
+            R.id.item_settings ->presenter.doSettings()
         }
         return super.onOptionsItemSelected(item)
     }
