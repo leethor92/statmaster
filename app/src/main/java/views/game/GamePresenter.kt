@@ -76,4 +76,9 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
             }
         }
     }
+
+    fun loadPlayersSearch(containingString: String)
+    {
+        view?.showPlayers(app.players.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) })
+    }
 }

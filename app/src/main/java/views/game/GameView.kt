@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_list.*
@@ -46,6 +47,22 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_match, menu)
+
+        val searchView: SearchView = menu?.findItem(R.id.item_search)?.actionView as SearchView
+        searchView.queryHint = "Search for a Player"
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(newText: String): Boolean {
+                presenter.loadPlayersSearch(newText!!)
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                if (query.isBlank() || query.isEmpty()) presenter.loadPlayers()
+                else presenter.loadPlayersSearch(query)
+                return false
+            }
+        })
+
         return super.onCreateOptionsMenu(menu)
     }
 
