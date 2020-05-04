@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game_list.*
 import models.GameModel
-import models.PlayerModel
 import org.wit.statmaster.R
 import views.BaseView
 
@@ -37,6 +37,22 @@ class GameListView : BaseView(), GameListener {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+
+        val searchView: SearchView = menu?.findItem(R.id.item_search)?.actionView as SearchView
+        searchView.queryHint = "Search for a Game"
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(newText: String): Boolean {
+                presenter.loadGamesSearch(newText!!)
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                if (query.isBlank() || query.isEmpty()) presenter.loadGames()
+                else presenter.loadGamesSearch(query)
+                return false
+            }
+        })
+
         return super.onCreateOptionsMenu(menu)
     }
 

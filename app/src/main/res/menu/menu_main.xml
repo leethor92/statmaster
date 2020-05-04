@@ -23,4 +23,11 @@
         android:id="@+id/item_wonGames"
         android:title="Show Won Games"
         android:checkable="true"/>
+
+    <item
+        android:id="@+id/item_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:title="Search for Games"/>
 </menu>

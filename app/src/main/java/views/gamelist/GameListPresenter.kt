@@ -31,6 +31,10 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
         view?.showGames(if (checked) app.games.findAll().filter { it.win } else app.games.findAll())
     }
 
+    fun loadGamesSearch(containingString: String){
+        view?.showGames(app.games.findAll().filter { it.title.toLowerCase().contains(containingString.toLowerCase()) })
+    }
+
     fun loadGames(){
         doAsync {
             val games = app.games.findAll()
