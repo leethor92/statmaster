@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity
 data class GameModel(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
-    var fbgId : String = "",
+    var fbId : String = "",
     var title: String = "",
     var score: String = "",
     var win: Boolean = false) : Parcelable

@@ -19,11 +19,11 @@
         android:title="@string/menu_deleteGame"
         app:showAsAction="never"/>
 
-    <item
+  <!--  <item
         android:id="@+id/item_addPlayer"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/menu_addPlayer"
-        app:showAsAction="never"/>
+        app:showAsAction="never"/>-->
 
     <item
         android:id="@+id/item_search"

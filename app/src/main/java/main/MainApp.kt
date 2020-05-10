@@ -4,8 +4,6 @@ import android.app.Application
 import models.*
 import models.firebase.GameFireStore
 import models.firebase.PlayerFireStore
-import models.room.GameStoreRoom
-import models.room.PlayerStoreRoom
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 

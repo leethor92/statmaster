@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.activity_player.*
+import models.GameModel
 import models.PlayerModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
@@ -19,11 +20,11 @@ class PlayerView : BaseView(), AnkoLogger {
 
     lateinit var presenter: PlayerPresenter
     var player = PlayerModel()
+    var game = GameModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
-
         super.init(toolbarPlayer, true);
 
         presenter = initPresenter (PlayerPresenter(this)) as PlayerPresenter

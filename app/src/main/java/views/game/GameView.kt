@@ -19,6 +19,7 @@ import org.wit.statmaster.R
 import views.BaseView
 import views.game.PlayerAdapter
 import views.game.PlayerListener
+import views.player.PlayerView
 import kotlin.math.round
 
 class GameView : BaseView() , AnkoLogger, PlayerListener {
@@ -37,6 +38,11 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
         val layoutManager = LinearLayoutManager(this)
         recyclerView1.layoutManager = layoutManager
         presenter.loadPlayers()
+
+        addPlayer.setOnClickListener {
+            startActivity(intentFor<PlayerView>().putExtra("game_data", presenter.game))
+            finish()
+        }
     }
 
     override fun showGame(game: GameModel) {
@@ -68,7 +74,6 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-            R.id.item_addPlayer -> presenter.doAddPlayer()
             R.id.item_delete -> {
                 presenter.doDelete()
             }
@@ -91,7 +96,7 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
     }
 
     override fun showPlayers (players: List<PlayerModel>) {
-        recyclerView1.adapter = PlayerAdapter(players, this)
+        recyclerView1.adapter = PlayerAdapter(players.filter {it.gameId == presenter.game.id }, this)
         recyclerView1.adapter?.notifyDataSetChanged()
     }
 

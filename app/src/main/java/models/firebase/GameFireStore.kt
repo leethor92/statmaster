@@ -22,29 +22,31 @@ class GameFireStore(val context: Context) : GameStore, AnkoLogger {
         return foundGame
     }
 
-    override fun create(game: GameModel) {
+    override fun create(game: GameModel) : Long {
         val key = db.child("users").child(userId).child("games").push().key
-        key?.let {
-            game.fbgId = key
+        //key?.let {
+            game.fbId = key!!
+            game.id = key.hashCode().toLong()
             games.add(game)
             db.child("users").child(userId).child("games").child(key).setValue(game)
-        }
+            return game.id
+        //}
     }
 
     override fun update(game: GameModel) {
-        var foundGame: GameModel? = games.find { g -> g.fbgId == game.fbgId }
+        var foundGame: GameModel? = games.find { g -> g.fbId == game.fbId }
         if (foundGame != null) {
             foundGame.title = game.title
             foundGame.score = game.score
             foundGame.win = game.win
         }
 
-        db.child("users").child(userId).child("games").child(game.fbgId).setValue(game)
+        db.child("users").child(userId).child("games").child(game.fbId).setValue(game)
 
     }
 
     override fun delete(game: GameModel) {
-        db.child("users").child(userId).child("games").child(game.fbgId).removeValue()
+        db.child("users").child(userId).child("games").child(game.fbId).removeValue()
         games.remove(game)
     }
 

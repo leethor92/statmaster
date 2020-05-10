@@ -29,11 +29,7 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun getPlayers() = app.players.findAll()
 
-    fun doAddPlayer() {
-        view?.startActivityForResult<PlayerView>(0)
-    }
 
     fun doEditPlayer(player: PlayerModel) {
         view?.startActivityForResult(view?.intentFor<PlayerView>()?.putExtra("player_edit", player), 0)
@@ -47,7 +43,7 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
             if (edit) {
                 app.games.update(game)
             } else {
-                app.games.create(game)
+                game.id = app.games.create(game)
             }
             uiThread {
                 view?.finish()

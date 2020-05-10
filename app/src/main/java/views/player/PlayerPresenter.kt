@@ -2,17 +2,21 @@ package views.player
 
 import android.content.Intent
 import helpers.showImagePicker
+import kotlinx.android.synthetic.main.activity_game.*
 import main.MainApp
+import models.GameModel
 import models.PlayerModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import views.BasePresenter
 import views.BaseView
 import views.IMAGE_REQUEST
+import views.game.PlayerAdapter
 
 class PlayerPresenter(view: BaseView) : BasePresenter(view) {
 
     var player = PlayerModel()
+    var game = GameModel()
 
     var edit = false;
 
@@ -22,17 +26,25 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
             view.showPlayer(player)
         }
+        else
+        {
+            game = view.intent.extras?.getParcelable<GameModel>("game_data")!!
+            player.gameId = game.id
+        }
+
     }
 
     fun doAddOrSave(name: String, number: String, points: Int, goals: Int, wides: Int, possessions: Int, passes: Int) {
+        player.name = name
+        player.number = number
+        player.point = points
+        player.goal = goals
+        player.wide = wides
+        player.possession = possessions
+        player.pass = passes
+        player.gameId = game.id
+
         doAsync {
-            player.name = name
-            player.number = number
-            player.point = points
-            player.goal = goals
-            player.wide = wides
-            player.possession = possessions
-            player.pass = passes
         if (edit) {
             app.players.update(player)
         } else {

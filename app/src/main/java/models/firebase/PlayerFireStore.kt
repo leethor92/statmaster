@@ -7,6 +7,7 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import helpers.readImageFromPath
+import models.GameModel
 import models.PlayerModel
 import models.PlayerStore
 import org.jetbrains.anko.AnkoLogger
@@ -16,7 +17,10 @@ import java.io.File
 class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
 
     val players = ArrayList<PlayerModel>()
+    val game = GameModel()
+
     lateinit var userId: String
+
     lateinit var db: DatabaseReference
     lateinit var st: StorageReference
 
@@ -29,18 +33,20 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
         return foundPlayer
     }
 
-    override fun create(player: PlayerModel) {
+    override fun create(player: PlayerModel) : Long {
         val key = db.child("users").child(userId).child("players").push().key
-        key?.let {
-            player.fbpId = key
+        //key?.let {
+            player.fbId = key!!
+            player.id = key.hashCode().toLong()
             players.add(player)
             db.child("users").child(userId).child("players").child(key).setValue(player)
             updateImage(player)
-        }
+            return player.id
+        //}
     }
 
     override fun update(player: PlayerModel) {
-        var foundPlayer: PlayerModel? = players.find { p -> p.fbpId == player.fbpId }
+        var foundPlayer: PlayerModel? = players.find { p -> p.fbId == player.fbId }
         if (foundPlayer != null) {
             foundPlayer.name = player.name
             foundPlayer.number = player.number
@@ -53,7 +59,7 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
 
         }
 
-        db.child("users").child(userId).child("players").child(player.fbpId).setValue(player)
+        db.child("users").child(userId).child("players").child(player.fbId).setValue(player)
         if ((player.image.length) > 0 && (player.image[0] != 'h')) {
             updateImage(player)
         }
@@ -61,7 +67,7 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
     }
 
     override fun delete(player: PlayerModel) {
-        db.child("users").child(userId).child("players").child(player.fbpId).removeValue()
+        db.child("users").child(userId).child("players").child(player.fbId).removeValue()
         players.remove(player)
     }
 
@@ -88,7 +94,7 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
                 }.addOnSuccessListener { taskSnapshot ->
                     taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
                         player.image = it.toString()
-                        db.child("users").child(userId).child("players").child(player.fbpId).setValue(player)
+                        db.child("users").child(userId).child("players").child(player.fbId).setValue(player)
                     }
                 }
             }
