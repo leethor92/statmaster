@@ -24,6 +24,10 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         if (view.intent.hasExtra("player_edit")) {
             edit = true
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
+            game = view.intent.extras?.getParcelable<GameModel>("game_data")!!
+
+            player.gameId = game.id
+
             view.showPlayer(player)
         }
         else

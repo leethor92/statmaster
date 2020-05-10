@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.card_player.view.*
+import models.GameModel
 import models.PlayerModel
 import org.wit.statmaster.R
 import kotlin.math.round
 
 
 interface PlayerListener {
-    fun onPlayerClick(player: PlayerModel)
+    fun onPlayerClick(player: PlayerModel, game: GameModel)
 }
 
 class PlayerAdapter constructor(
@@ -33,14 +34,15 @@ class PlayerAdapter constructor(
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val player = players[holder.adapterPosition]
-        holder.bind(player, listener)
+        val game = GameModel()
+        holder.bind(player, game, listener)
     }
 
     override fun getItemCount(): Int = players.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(player: PlayerModel, listener: PlayerListener) {
+        fun bind(player: PlayerModel, game: GameModel, listener: PlayerListener) {
             itemView.playerName.text = player.name
             itemView.number.text = player.number
             Glide.with(itemView.context).load(player.image).into(itemView.imageIcon);
@@ -50,7 +52,7 @@ class PlayerAdapter constructor(
             itemView.total_passes.text = (player.pass.toString() + " passes")
             itemView.total_possessions.text = (player.possession.toString() + " possessions")
             itemView.accuracy.text = (player.accuracy.toString() + "%")
-            itemView.setOnClickListener { listener.onPlayerClick(player) }
+            itemView.setOnClickListener { listener.onPlayerClick(player, game) }
 
             itemView.add_point.setOnClickListener(View.OnClickListener {
                 player.point++

@@ -56,7 +56,7 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
             foundPlayer.wide = player.wide
             foundPlayer.possession = player.possession
             foundPlayer.pass = player.pass
-
+            foundPlayer.gameId = player.gameId
         }
 
         db.child("users").child(userId).child("players").child(player.fbId).setValue(player)

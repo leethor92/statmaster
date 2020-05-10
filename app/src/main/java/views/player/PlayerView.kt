@@ -25,7 +25,7 @@ class PlayerView : BaseView(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
-        super.init(toolbarPlayer, true);
+        super.init(toolbarPlayer, false);
 
         presenter = initPresenter (PlayerPresenter(this)) as PlayerPresenter
 

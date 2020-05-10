@@ -29,10 +29,8 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-
-
-    fun doEditPlayer(player: PlayerModel) {
-        view?.startActivityForResult(view?.intentFor<PlayerView>()?.putExtra("player_edit", player), 0)
+    fun doEditPlayer(player: PlayerModel, game: GameModel) {
+        view?.startActivityForResult(view?.intentFor<PlayerView>()?.putExtra("player_edit", player)?.putExtra("game_data", game), 0)
     }
 
     fun doAddOrSave(gameTitle: String, score: String, winCheckbox: Boolean) {

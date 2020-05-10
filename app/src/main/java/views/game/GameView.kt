@@ -91,8 +91,8 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onPlayerClick(player: PlayerModel) {
-        presenter.doEditPlayer(player)
+    override fun onPlayerClick(player: PlayerModel, game: GameModel) {
+        presenter.doEditPlayer(player, presenter.game)
     }
 
     override fun showPlayers (players: List<PlayerModel>) {
