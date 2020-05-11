@@ -42,6 +42,8 @@ class PlayerView : BaseView(), AnkoLogger {
         wides.setText(player.wide.toString())
         possessions.setText(player.possession.toString())
         passes.setText(player.pass.toString())
+        lostPossessions.setText(player.lostPossession.toString())
+        missedPasses.setText(player.missedPass.toString())
         Glide.with(this).load(player.image).into(playerImage);
         if (player.image != null) {
             chooseImage.setText(R.string.change_player_image)
@@ -66,7 +68,8 @@ class PlayerView : BaseView(), AnkoLogger {
                     toast(R.string.enter_player_title)
                 } else {
                     presenter.doAddOrSave(playerName.text.toString(), number.text.toString(), Integer.parseInt(points.text.toString()), Integer.parseInt(goals.text.toString()),
-                        Integer.parseInt(wides.text.toString()), Integer.parseInt(passes.text.toString()), Integer.parseInt(possessions.text.toString()))
+                        Integer.parseInt(wides.text.toString()), Integer.parseInt(passes.text.toString()), Integer.parseInt(possessions.text.toString()),
+                        Integer.parseInt(lostPossessions.text.toString()), Integer.parseInt(missedPasses.text.toString()))
                 }
             }
         }

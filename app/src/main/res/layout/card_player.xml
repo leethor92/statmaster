@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="216dp"
         android:padding="16dp">
 
         <ImageView
@@ -129,7 +129,7 @@
             android:id="@+id/minus_pass"
             android:layout_width="29dp"
             android:layout_height="20dp"
-            android:layout_alignBottom="@id/minus_possession"
+            android:layout_alignBottom="@id/minus_lost_possession"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="-27dp"
             android:layout_toEndOf="@id/imageIcon"
@@ -139,22 +139,63 @@
             android:id="@+id/add_pass"
             android:layout_width="38dp"
             android:layout_height="19dp"
-            android:layout_alignBottom="@id/add_possession"
+            android:layout_alignBottom="@id/add_lost_possession"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="-25dp"
-            android:layout_toEndOf="@id/minus_pass"
+            android:layout_toEndOf="@id/minus_possession"
             android:background="@android:drawable/ic_input_add" />
 
         <TextView
             android:id="@+id/total_passes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/total_possessions"
+            android:layout_alignBottom="@id/totalLostPossessions"
             android:layout_marginStart="17dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="-26dp"
             android:layout_toEndOf="@id/add_pass"
             android:text="@string/pass_total" />
+
+        <Button
+            android:id="@+id/minus_missed_pass"
+            android:layout_width="29dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@id/minus_pass"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="-27dp"
+            android:layout_toEndOf="@id/imageIcon"
+            android:background="@android:drawable/ic_delete" />
+
+        <Button
+            android:id="@+id/add_missed_pass"
+            android:layout_width="37dp"
+            android:layout_height="17dp"
+            android:layout_alignBottom="@id/add_pass"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="-23dp"
+            android:layout_toEndOf="@id/minus_pass"
+            android:background="@android:drawable/ic_input_add" />
+
+        <TextView
+            android:id="@+id/total_missed_passes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/total_passes"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="-26dp"
+            android:layout_toEndOf="@id/add_missed_pass"
+            android:text="@string/missed_pass_total" />
+
+        <TextView
+            android:id="@+id/passingAccuracy"
+            android:layout_width="61dp"
+            android:layout_height="18dp"
+            android:layout_alignBottom="@id/total_passes"
+            android:layout_marginStart="9dp"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@id/total_passes"
+            android:text="@string/passingAcc" />
 
         <Button
             android:id="@+id/minus_possession"
@@ -185,6 +226,46 @@
             android:layout_marginBottom="-26dp"
             android:layout_toEndOf="@id/add_possession"
             android:text="@string/possession_total" />
+
+        <Button
+            android:id="@+id/minus_lost_possession"
+            android:layout_width="26dp"
+            android:layout_height="17dp"
+            android:layout_alignBottom="@id/minus_possession"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="-24dp"
+            android:layout_toEndOf="@id/imageIcon"
+            android:background="@android:drawable/ic_delete" />
+
+        <Button
+            android:id="@+id/add_lost_possession"
+            android:layout_width="31dp"
+            android:layout_height="16dp"
+            android:layout_alignBottom="@id/add_possession"
+            android:layout_marginStart="19dp"
+            android:layout_marginBottom="-28dp"
+            android:layout_toEndOf="@id/minus_possession"
+            android:background="@android:drawable/ic_input_add" />
+
+        <TextView
+            android:id="@+id/totalLostPossessions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/total_possessions"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="-26dp"
+            android:layout_toEndOf="@id/add_possession"
+            android:text="@string/lost_possession_total" />
+
+        <TextView
+            android:id="@+id/retention"
+            android:layout_width="61dp"
+            android:layout_height="18dp"
+            android:layout_alignBottom="@id/total_possessions"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="0dp"
+            android:layout_toEndOf="@id/total_possessions"
+            android:text="@string/retentionAverage" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

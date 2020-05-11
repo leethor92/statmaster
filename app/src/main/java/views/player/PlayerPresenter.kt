@@ -38,7 +38,7 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
 
     }
 
-    fun doAddOrSave(name: String, number: String, points: Int, goals: Int, wides: Int, possessions: Int, passes: Int) {
+    fun doAddOrSave(name: String, number: String, points: Int, goals: Int, wides: Int, possessions: Int, passes: Int, missedPasses: Int, lostPossessions: Int) {
         player.name = name
         player.number = number
         player.point = points
@@ -47,6 +47,8 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         player.possession = possessions
         player.pass = passes
         player.gameId = game.id
+        player.lostPossession = lostPossessions
+        player.missedPass = missedPasses
 
         doAsync {
         if (edit) {

@@ -44,7 +44,7 @@
                 android:layout_width="379dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
-                android:layout_marginTop="264dp"
+                android:layout_marginTop="256dp"
                 android:layout_marginEnd="19dp"
                 android:background="@color/colorAccent"
                 android:paddingTop="8dp"
@@ -105,7 +105,7 @@
 
             <TextView
                 android:id="@+id/points"
-                android:layout_width="105dp"
+                android:layout_width="84dp"
                 android:layout_height="25dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
@@ -128,8 +128,8 @@
 
             <TextView
                 android:id="@+id/goals"
-                android:layout_width="105dp"
-                android:layout_height="25dp"
+                android:layout_width="86dp"
+                android:layout_height="23dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="142dp"
@@ -151,8 +151,8 @@
 
             <TextView
                 android:id="@+id/wides"
-                android:layout_width="105dp"
-                android:layout_height="25dp"
+                android:layout_width="87dp"
+                android:layout_height="24dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="142dp"
@@ -174,8 +174,8 @@
 
             <TextView
                 android:id="@+id/passes"
-                android:layout_width="105dp"
-                android:layout_height="25dp"
+                android:layout_width="87dp"
+                android:layout_height="22dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="142dp"
@@ -186,21 +186,48 @@
                 app:layout_constraintTop_toBottomOf="@+id/wides" />
 
             <TextView
+                android:id="@+id/playerMissedPasses"
+                android:layout_width="97dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="148dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/playerMissedPasses"
+                app:layout_constraintBottom_toTopOf="@+id/playerLostPossessions"
+                app:layout_constraintEnd_toStartOf="@+id/missedPasses"
+                app:layout_constraintStart_toEndOf="@+id/passes"
+                app:layout_constraintTop_toBottomOf="@+id/playerName" />
+
+            <TextView
+                android:id="@+id/missedPasses"
+                android:layout_width="71dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="148dp"
+                android:layout_marginBottom="33dp"
+                android:text="0"
+                app:layout_constraintBottom_toTopOf="@+id/lostPossessions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/playerMissedPasses"
+                app:layout_constraintTop_toBottomOf="@+id/playerName" />
+
+            <TextView
                 android:id="@+id/playerPossessions"
-                android:layout_width="100dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="106dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="21dp"
                 android:text="@string/playerPossessions"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/playerPasses" />
 
             <TextView
                 android:id="@+id/possessions"
-                android:layout_width="120dp"
-                android:layout_height="32dp"
+                android:layout_width="82dp"
+                android:layout_height="22dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="27dp"
                 android:layout_marginEnd="142dp"
                 android:text="0"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -208,10 +235,37 @@
                 app:layout_constraintStart_toEndOf="@+id/playerPossessions"
                 app:layout_constraintTop_toBottomOf="@+id/passes" />
 
+            <TextView
+                android:id="@+id/playerLostPossessions"
+                android:layout_width="100dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="71dp"
+                android:layout_marginBottom="12dp"
+                android:text="@string/playerLostPossessions"
+                app:layout_constraintBottom_toTopOf="@+id/chooseImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/possessions"
+                app:layout_constraintTop_toBottomOf="@+id/playerMissedPasses" />
+
+            <TextView
+                android:id="@+id/lostPossessions"
+                android:layout_width="60dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="28dp"
+                android:text="0"
+                app:layout_constraintBottom_toTopOf="@+id/chooseImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.555"
+                app:layout_constraintStart_toEndOf="@+id/playerLostPossessions" />
+
             <ImageView
                 android:id="@+id/playerImage"
-                android:layout_width="393dp"
-                android:layout_height="150dp"
+                android:layout_width="403dp"
+                android:layout_height="153dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginEnd="5dp"

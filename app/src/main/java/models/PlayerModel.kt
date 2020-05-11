@@ -20,5 +20,9 @@ data class PlayerModel(
     var wide: Int = 0,
     var gameId: Long = 0,
     var possession: Int = 0,
+    var lostPossession: Int = 0,
     var pass: Int = 0,
-    var accuracy: Double = 0.00) : Parcelable
+    var missedPass: Int = 0,
+    var accuracy: Double = 0.00,
+    var passingAcc: Double = 0.00,
+    var ballRetention: Double = 0.00) : Parcelable

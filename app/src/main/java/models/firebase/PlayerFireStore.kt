@@ -55,7 +55,9 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
             foundPlayer.goal = player.goal
             foundPlayer.wide = player.wide
             foundPlayer.possession = player.possession
+            foundPlayer.lostPossession = player.lostPossession
             foundPlayer.pass = player.pass
+            foundPlayer.missedPass = player.missedPass
             foundPlayer.gameId = player.gameId
         }
 
