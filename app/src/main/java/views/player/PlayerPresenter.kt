@@ -2,8 +2,6 @@ package views.player
 
 import android.content.Intent
 import helpers.showImagePicker
-import kotlinx.android.synthetic.main.activity_game.*
-import main.MainApp
 import models.GameModel
 import models.PlayerModel
 import org.jetbrains.anko.doAsync
@@ -11,7 +9,7 @@ import org.jetbrains.anko.uiThread
 import views.BasePresenter
 import views.BaseView
 import views.IMAGE_REQUEST
-import views.game.PlayerAdapter
+
 
 class PlayerPresenter(view: BaseView) : BasePresenter(view) {
 
