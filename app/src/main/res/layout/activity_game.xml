@@ -66,6 +66,26 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
+                <TextView
+                    android:id="@+id/gamePoints"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="-26dp"
+                    android:text="@string/gamePoints" />
+
+                <TextView
+                    android:id="@+id/gameGoals"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="-26dp"
+                    android:text="@string/gameGoals" />
+
                 <CheckBox
                     android:id="@+id/winCheckbox"
                     android:layout_width="116dp"

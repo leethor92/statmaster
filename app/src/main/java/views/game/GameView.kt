@@ -45,10 +45,12 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
         }
     }
 
-    override fun showGame(game: GameModel) {
+    override fun showGame(game: GameModel, totalPlayerGoals: Int, totalPlayerPoints: Int ) {
         gameTitle.setText(game.title)
         score.setText(game.score)
         winCheckbox.isChecked = game.win
+        gameGoals.text = "Total player goals: $totalPlayerGoals"
+        gamePoints.text = "Total number of player points: $totalPlayerPoints"
     }
     
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -103,5 +105,13 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         presenter.loadPlayers()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun getTotalPlayerGoals(players: List<PlayerModel>): Int {
+        return players.filter { it.gameId == presenter.game.id }.sumBy { it.goal }
+    }
+
+    override fun getTotalPlayerPoints(players: List<PlayerModel>): Int {
+        return players.filter { it.gameId == presenter.game.id }.sumBy { it.point }
     }
 }

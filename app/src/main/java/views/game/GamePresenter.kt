@@ -1,31 +1,33 @@
 package org.wit.placemark.activities
 
-import android.view.View
 import main.MainApp
 import models.GameModel
 import models.PlayerModel
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivityForResult
-import org.jetbrains.anko.uiThread
-import org.wit.statmaster.activities.GameView
+import org.jetbrains.anko.*
 import views.BasePresenter
 import views.BaseView
 import views.player.PlayerView
 
-class GamePresenter(view: BaseView) : BasePresenter(view) {
+class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
 
     var game = GameModel()
-
     var edit = false;
 
     init {
         app = view.application as MainApp
 
-        if (view.intent.hasExtra("game_edit")) {
-            edit = true
-            game = view.intent.extras?.getParcelable<GameModel>("game_edit")!!
-            view.showGame(game)
+        doAsync {
+            val players = app.players.findAll()
+            uiThread {
+
+            if (view.intent.hasExtra("game_edit")) {
+                edit = true
+                game = view.intent.extras?.getParcelable<GameModel>("game_edit")!!
+                var totalPlayerPoints = view.getTotalPlayerPoints(players)
+                var totalPlayerGoals = view.getTotalPlayerGoals(players)
+                view.showGame(game, totalPlayerGoals, totalPlayerPoints)
+                    }
+                }
         }
     }
 
@@ -75,4 +77,5 @@ class GamePresenter(view: BaseView) : BasePresenter(view) {
     {
         view?.showPlayers(app.players.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) })
     }
+
 }

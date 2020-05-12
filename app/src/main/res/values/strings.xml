@@ -41,6 +41,8 @@
     <string name="menu_saveGame">Save</string>
     <string name="menu_savePlayer">Save</string>
     <string name="playerPoints">Total Points: </string>
+    <string name="gamePoints">Total Player Points: </string>
+    <string name="gameGoals">Total Player Goals: </string>
     <string name="playerGoals">Total Goals: </string>
     <string name="playerWides">Total Wides: </string>
     <string name="playerPossessions">Total Possessions: </string>

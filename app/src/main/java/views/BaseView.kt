@@ -70,10 +70,12 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         basePresenter?.doRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    open fun showGame(game: GameModel) {}
+    open fun showGame(game: GameModel, totalPlayerGoals: Int, totalPlayerPoints: Int) {}
     open fun showGames(games: List<GameModel>) {}
     open fun showPlayer(player: PlayerModel) {}
     open fun showPlayers(players: List<PlayerModel>) {}
+    open fun getTotalPlayerGoals(players: List<PlayerModel> ) :Int { return 0}
+    open fun getTotalPlayerPoints(players: List<PlayerModel>) :Int { return 0}
     open fun showProgress() {}
     open fun hideProgress() {}
 }
