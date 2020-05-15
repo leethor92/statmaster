@@ -39,6 +39,8 @@ class GameFireStore(val context: Context) : GameStore, AnkoLogger {
             foundGame.title = game.title
             foundGame.score = game.score
             foundGame.win = game.win
+            foundGame.goal = game.goal
+            foundGame.point = game.point
         }
 
         db.child("users").child(userId).child("games").child(game.fbId).setValue(game)

@@ -2,7 +2,7 @@
     <string name="app_name">Statmaster</string>
     <string name="button_addGame">Add Game</string>
     <string name="hint_gameTitle">Game Title</string>
-    <string name="hint_gameScore">Score</string>
+    <string name="hint_gameScore">Opposition Score</string>
     <string name="menu_addGame">Add</string>
     <string name="menu_addPlayer">Add Player</string>
     <string name="button_addPlayer">Add Player</string>
@@ -41,8 +41,8 @@
     <string name="menu_saveGame">Save</string>
     <string name="menu_savePlayer">Save</string>
     <string name="playerPoints">Total Points: </string>
-    <string name="gamePoints">Total Player Points: </string>
-    <string name="gameGoals">Total Player Goals: </string>
+    <string name="gamePoints">Points: </string>
+    <string name="gameGoals">Goals: </string>
     <string name="playerGoals">Total Goals: </string>
     <string name="playerWides">Total Wides: </string>
     <string name="playerPossessions">Total Possessions: </string>
@@ -60,4 +60,5 @@
     <string name="hint_email">New Email</string>
     <string name="hint_password">New Password</string>
     <string name="save_settings">Save Settings</string>
+    <string name="vs">VS</string>
 </resources>

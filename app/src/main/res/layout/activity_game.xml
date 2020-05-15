@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp">>
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -28,92 +30,151 @@
                 app:titleTextColor="@color/colorPrimary" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/appBarLayout"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/appBarLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="46dp"
+            android:layout_marginBottom="-46dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/gameTitle"
+                android:layout_width="376dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="15dp"
+                android:autofillHints=""
+                android:hint="@string/hint_gameTitle"
+                android:inputType="text"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/gameTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:hint="@string/hint_gameTitle"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp" />
+            <TextView
+                android:id="@+id/gameGoals"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="132dp"
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
+                android:text="@string/gameGoals"
+                app:layout_constraintBottom_toTopOf="@+id/addPlayer"
+                app:layout_constraintEnd_toStartOf="@+id/gamePoints"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.017" />
 
-                <EditText
-                    android:id="@+id/score"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:hint="@string/hint_gameScore"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp" />
+            <TextView
+                android:id="@+id/gamePoints"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="132dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="20dp"
+                android:padding="8dp"
+                android:text="@string/gamePoints"
+                app:layout_constraintBottom_toTopOf="@+id/winCheckbox"
+                app:layout_constraintEnd_toStartOf="@+id/vs"
+                app:layout_constraintStart_toEndOf="@+id/gameGoals"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
-                <TextView
-                    android:id="@+id/gamePoints"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginBottom="-26dp"
-                    android:text="@string/gamePoints" />
+            <TextView
+                android:id="@+id/vs"
+                android:layout_width="59dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="132dp"
+                android:layout_marginEnd="14dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/vs"
+                app:layout_constraintEnd_toStartOf="@+id/score"
+                app:layout_constraintStart_toEndOf="@+id/gamePoints"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/gameGoals"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginBottom="-26dp"
-                    android:text="@string/gameGoals" />
+            <EditText
+                android:id="@+id/score"
+                android:layout_width="131dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="132dp"
+                android:hint="@string/hint_gameScore"
+                android:inputType="numberDecimal"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/vs"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <CheckBox
-                    android:id="@+id/winCheckbox"
-                    android:layout_width="116dp"
-                    android:layout_height="18dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:text="@string/checkbox_win" />
+            <CheckBox
+                android:id="@+id/winCheckbox"
+                android:layout_width="116dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="132dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="163dp"
+                android:text="@string/checkbox_win"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/score" />
 
-                <Button
-                    android:id="@+id/addPlayer"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/colorAccent"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/button_addPlayer"
-                    android:textSize="16sp"/>
+            <Button
+                android:id="@+id/addPlayer"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="121dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="140dp"
+                android:background="@color/colorAccent"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="@string/button_addPlayer"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winCheckbox" />
+
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="399dp"
+                android:layout_height="440dp"
+                android:layout_below="@id/addPlayer"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="15dp"
+                android:fillViewport="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.111"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addPlayer">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="410dp"
+                    android:layout_height="427dp"
                     android:scrollbars="vertical"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-            </LinearLayout>
-        </ScrollView>
-
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,6 +39,8 @@ class GameAdapter constructor(
         fun bind(game: GameModel, listener: GameListener) {
             itemView.gameTitle.text = game.title
             itemView.score.text = game.score
+            itemView.gameGoals.text = game.goal
+            itemView.gamePoints.text = game.point
             itemView.setOnClickListener { listener.onGameClick(game) }
         }
     }

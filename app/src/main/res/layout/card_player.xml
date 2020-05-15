@@ -27,27 +27,30 @@
             android:layout_alignParentTop="true"
             android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/playerName" />
+      <TextView
+          android:id="@+id/number"
+          android:layout_width="53dp"
+          android:layout_height="33dp"
+          android:layout_below="@id/playerName"
+          android:layout_marginTop="46dp"
+          android:background="@drawable/ic_jersey_vector"
+          android:gravity="center_horizontal" />
 
-        <Button
-            android:id="@+id/minus_point"
-            android:layout_width="29dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/imageIcon"
-            android:background="@android:drawable/ic_delete" />
+      <Button
+          android:id="@+id/minus_point"
+          android:layout_width="29dp"
+          android:layout_height="20dp"
+          android:layout_marginStart="16dp"
+          android:layout_toEndOf="@id/imageIcon"
+          android:background="@drawable/ic_remove_circle_black_24dp" />
 
-        <Button
-            android:id="@+id/add_point"
-            android:layout_width="37dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="17dp"
-            android:layout_toEndOf="@id/minus_point"
-            android:background="@android:drawable/ic_input_add" />
+      <Button
+          android:id="@+id/add_point"
+          android:layout_width="37dp"
+          android:layout_height="21dp"
+          android:layout_marginStart="17dp"
+          android:layout_toEndOf="@id/minus_point"
+          android:background="@drawable/ic_add_circle_black_24dp" />
 
         <TextView
             android:id="@+id/totalPoints"
@@ -65,25 +68,25 @@
             android:layout_toEndOf="@id/totalPoints"
             android:text="@string/accuracy" />
 
-        <Button
-            android:id="@+id/minus_goal"
-            android:layout_width="29dp"
-            android:layout_height="20dp"
-            android:layout_alignBottom="@id/minus_point"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-27dp"
-            android:layout_toEndOf="@id/imageIcon"
-            android:background="@android:drawable/ic_delete" />
+      <Button
+          android:id="@+id/minus_goal"
+          android:layout_width="29dp"
+          android:layout_height="20dp"
+          android:layout_alignBottom="@id/minus_point"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-27dp"
+          android:layout_toEndOf="@id/imageIcon"
+          android:background="@drawable/ic_remove_circle_black_24dp" />
 
-        <Button
-            android:id="@+id/add_goal"
-            android:layout_width="38dp"
-            android:layout_height="19dp"
-            android:layout_alignBottom="@id/add_point"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-25dp"
-            android:layout_toEndOf="@id/minus_goal"
-            android:background="@android:drawable/ic_input_add" />
+      <Button
+          android:id="@+id/add_goal"
+          android:layout_width="38dp"
+          android:layout_height="19dp"
+          android:layout_alignBottom="@id/add_point"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-25dp"
+          android:layout_toEndOf="@id/minus_goal"
+          android:background="@drawable/ic_add_circle_black_24dp" />
 
         <TextView
             android:id="@+id/totalGoals"
@@ -95,25 +98,25 @@
             android:layout_toEndOf="@id/add_goal"
             android:text="@string/goal_total" />
 
-        <Button
-            android:id="@+id/minus_wide"
-            android:layout_width="29dp"
-            android:layout_height="20dp"
-            android:layout_alignBottom="@id/minus_goal"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-27dp"
-            android:layout_toEndOf="@id/imageIcon"
-            android:background="@android:drawable/ic_delete" />
+      <Button
+          android:id="@+id/minus_wide"
+          android:layout_width="29dp"
+          android:layout_height="20dp"
+          android:layout_alignBottom="@id/minus_goal"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-27dp"
+          android:layout_toEndOf="@id/imageIcon"
+          android:background="@drawable/ic_remove_circle_black_24dp" />
 
-        <Button
-            android:id="@+id/add_wide"
-            android:layout_width="38dp"
-            android:layout_height="19dp"
-            android:layout_alignBottom="@id/add_goal"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-25dp"
-            android:layout_toEndOf="@id/minus_wide"
-            android:background="@android:drawable/ic_input_add" />
+      <Button
+          android:id="@+id/add_wide"
+          android:layout_width="38dp"
+          android:layout_height="19dp"
+          android:layout_alignBottom="@id/add_goal"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-25dp"
+          android:layout_toEndOf="@id/minus_wide"
+          android:background="@drawable/ic_add_circle_black_24dp" />
 
         <TextView
             android:id="@+id/totalWides"
@@ -125,25 +128,25 @@
             android:layout_toEndOf="@id/add_wide"
             android:text="@string/wide_total" />
 
-        <Button
-            android:id="@+id/minus_pass"
-            android:layout_width="29dp"
-            android:layout_height="20dp"
-            android:layout_alignBottom="@id/minus_lost_possession"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-27dp"
-            android:layout_toEndOf="@id/imageIcon"
-            android:background="@android:drawable/ic_delete" />
+      <Button
+          android:id="@+id/minus_pass"
+          android:layout_width="29dp"
+          android:layout_height="20dp"
+          android:layout_alignBottom="@id/minus_lost_possession"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-27dp"
+          android:layout_toEndOf="@id/imageIcon"
+          android:background="@drawable/ic_remove_circle_black_24dp" />
 
-        <Button
-            android:id="@+id/add_pass"
-            android:layout_width="38dp"
-            android:layout_height="19dp"
-            android:layout_alignBottom="@id/add_lost_possession"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-25dp"
-            android:layout_toEndOf="@id/minus_possession"
-            android:background="@android:drawable/ic_input_add" />
+      <Button
+          android:id="@+id/add_pass"
+          android:layout_width="38dp"
+          android:layout_height="19dp"
+          android:layout_alignBottom="@id/add_lost_possession"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-25dp"
+          android:layout_toEndOf="@id/minus_possession"
+          android:background="@drawable/ic_add_circle_black_24dp" />
 
         <TextView
             android:id="@+id/total_passes"
@@ -156,25 +159,25 @@
             android:layout_toEndOf="@id/add_pass"
             android:text="@string/pass_total" />
 
-        <Button
-            android:id="@+id/minus_missed_pass"
-            android:layout_width="29dp"
-            android:layout_height="20dp"
-            android:layout_alignBottom="@id/minus_pass"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-27dp"
-            android:layout_toEndOf="@id/imageIcon"
-            android:background="@android:drawable/ic_delete" />
+      <Button
+          android:id="@+id/minus_missed_pass"
+          android:layout_width="29dp"
+          android:layout_height="20dp"
+          android:layout_alignBottom="@id/minus_pass"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-27dp"
+          android:layout_toEndOf="@id/imageIcon"
+          android:background="@drawable/ic_remove_circle_black_24dp" />
 
-        <Button
-            android:id="@+id/add_missed_pass"
-            android:layout_width="37dp"
-            android:layout_height="17dp"
-            android:layout_alignBottom="@id/add_pass"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-23dp"
-            android:layout_toEndOf="@id/minus_pass"
-            android:background="@android:drawable/ic_input_add" />
+      <Button
+          android:id="@+id/add_missed_pass"
+          android:layout_width="36dp"
+          android:layout_height="21dp"
+          android:layout_alignBottom="@id/add_pass"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-26dp"
+          android:layout_toEndOf="@id/minus_pass"
+          android:background="@drawable/ic_add_circle_black_24dp" />
 
         <TextView
             android:id="@+id/total_missed_passes"
@@ -197,25 +200,25 @@
             android:layout_toEndOf="@id/total_passes"
             android:text="@string/passingAcc" />
 
-        <Button
-            android:id="@+id/minus_possession"
-            android:layout_width="29dp"
-            android:layout_height="20dp"
-            android:layout_alignBottom="@id/minus_wide"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-27dp"
-            android:layout_toEndOf="@id/imageIcon"
-            android:background="@android:drawable/ic_delete" />
+      <Button
+          android:id="@+id/minus_possession"
+          android:layout_width="29dp"
+          android:layout_height="20dp"
+          android:layout_alignBottom="@id/minus_wide"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-27dp"
+          android:layout_toEndOf="@id/imageIcon"
+          android:background="@drawable/ic_remove_circle_black_24dp" />
 
-        <Button
-            android:id="@+id/add_possession"
-            android:layout_width="38dp"
-            android:layout_height="19dp"
-            android:layout_alignBottom="@id/add_wide"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-25dp"
-            android:layout_toEndOf="@id/minus_possession"
-            android:background="@android:drawable/ic_input_add" />
+      <Button
+          android:id="@+id/add_possession"
+          android:layout_width="38dp"
+          android:layout_height="19dp"
+          android:layout_alignBottom="@id/add_wide"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-25dp"
+          android:layout_toEndOf="@id/minus_possession"
+          android:background="@drawable/ic_add_circle_black_24dp" />
 
         <TextView
             android:id="@+id/total_possessions"
@@ -227,25 +230,25 @@
             android:layout_toEndOf="@id/add_possession"
             android:text="@string/possession_total" />
 
-        <Button
-            android:id="@+id/minus_lost_possession"
-            android:layout_width="26dp"
-            android:layout_height="17dp"
-            android:layout_alignBottom="@id/minus_possession"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="-24dp"
-            android:layout_toEndOf="@id/imageIcon"
-            android:background="@android:drawable/ic_delete" />
+      <Button
+          android:id="@+id/minus_lost_possession"
+          android:layout_width="26dp"
+          android:layout_height="17dp"
+          android:layout_alignBottom="@id/minus_possession"
+          android:layout_marginStart="16dp"
+          android:layout_marginBottom="-24dp"
+          android:layout_toEndOf="@id/imageIcon"
+          android:background="@drawable/ic_remove_circle_black_24dp" />
 
-        <Button
-            android:id="@+id/add_lost_possession"
-            android:layout_width="31dp"
-            android:layout_height="16dp"
-            android:layout_alignBottom="@id/add_possession"
-            android:layout_marginStart="19dp"
-            android:layout_marginBottom="-28dp"
-            android:layout_toEndOf="@id/minus_possession"
-            android:background="@android:drawable/ic_input_add" />
+      <Button
+          android:id="@+id/add_lost_possession"
+          android:layout_width="31dp"
+          android:layout_height="16dp"
+          android:layout_alignBottom="@id/add_possession"
+          android:layout_marginStart="19dp"
+          android:layout_marginBottom="-28dp"
+          android:layout_toEndOf="@id/minus_possession"
+          android:background="@drawable/ic_add_circle_black_24dp" />
 
         <TextView
             android:id="@+id/totalLostPossessions"

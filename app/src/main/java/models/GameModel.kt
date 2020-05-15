@@ -12,4 +12,6 @@ data class GameModel(
     var fbId : String = "",
     var title: String = "",
     var score: String = "",
+    var goal: String = "",
+    var point: String = "",
     var win: Boolean = false) : Parcelable

@@ -7,8 +7,8 @@
     android:elevation="24dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="611dp"
+        android:layout_height="match_parent"
         android:padding="16dp">
 
         <TextView
@@ -16,13 +16,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:hint="@string/hint_gameTitle"
             android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/gameGoals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameTitle"
+            android:layout_marginTop="17dp"
+            android:hint="@string/gameGoals" />
+
+        <TextView
+        android:id="@+id/gamePoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gameTitle"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@id/gameGoals"
+        android:hint="@string/gamePoints" />
+
+        <TextView
+            android:id="@+id/vs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gameTitle"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="17dp"
+            android:layout_toEndOf="@id/gamePoints"
+            android:hint="@string/vs" />
 
         <TextView
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/gameTitle" />
+            android:layout_below="@id/gameTitle"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="17dp"
+            android:layout_toEndOf="@id/vs" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
