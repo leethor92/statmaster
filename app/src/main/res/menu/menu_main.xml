@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_add"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/menu_addGame"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_settings"
+        android:title="@string/menu_userSettings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_logout"
+        android:title="@string/menu_logout"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/item_wonGames"
+        android:title="Show Won Games"
+        android:checkable="true"/>
+
+    <item
+        android:id="@+id/item_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:title="Search for Games"/>
+</menu>

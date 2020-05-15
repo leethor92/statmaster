@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/menu_saveGame"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/item_cancel"
+        android:icon="@android:drawable/ic_delete"
+        android:title="@string/menu_cancelPlayer"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/menu_deleteGame"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:title="Search for Players"/>
+</menu>
