@@ -14,4 +14,6 @@ data class GameModel(
     var score: String = "",
     var goal: String = "",
     var point: String = "",
-    var win: Boolean = false) : Parcelable
+    var win: Boolean = false,
+    var draw: Boolean = false,
+    var loss: Boolean = false) : Parcelable

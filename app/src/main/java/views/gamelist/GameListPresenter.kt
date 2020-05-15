@@ -1,7 +1,6 @@
 package views.gamelist
 
 import com.google.firebase.auth.FirebaseAuth
-import main.MainApp
 import models.GameModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.intentFor
@@ -29,6 +28,14 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doShowWonGames(checked: Boolean){
         view?.showGames(if (checked) app.games.findAll().filter { it.win } else app.games.findAll())
+    }
+
+    fun doShowDrawnGames(checked: Boolean){
+        view?.showGames(if (checked) app.games.findAll().filter { it.draw } else app.games.findAll())
+    }
+
+    fun doShowLostGames(checked: Boolean){
+        view?.showGames(if (checked) app.games.findAll().filter { it.loss } else app.games.findAll())
     }
 
     fun loadGamesSearch(containingString: String){

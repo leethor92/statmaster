@@ -49,6 +49,8 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
         gameTitle.setText(game.title)
         score.setText(game.score)
         winCheckbox.isChecked = game.win
+        drawCheckbox.isChecked = game.draw
+        lossCheckbox.isChecked = game.loss
         gameGoals.text = game.goal
         gamePoints.text = game.point
     }
@@ -86,7 +88,7 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
                 if (gameTitle.text.toString().isEmpty()) {
                     toast(R.string.enter_game_title)
                 } else {
-                    presenter.doAddOrSave(gameTitle.text.toString(), score.text.toString(), winCheckbox.isChecked, gameGoals.text.toString(), gamePoints.text.toString())
+                    presenter.doAddOrSave(gameTitle.text.toString(), score.text.toString(), winCheckbox.isChecked, drawCheckbox.isChecked, lossCheckbox.isChecked)
                 }
             }
         }

@@ -35,10 +35,12 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         view?.startActivityForResult(view?.intentFor<PlayerView>()?.putExtra("player_edit", player)?.putExtra("game_data", game), 0)
     }
 
-    fun doAddOrSave(gameTitle: String, score: String, winCheckbox: Boolean, totalPlayerGoals: String, totalPlayerPoints: String) {
+    fun doAddOrSave(gameTitle: String, score: String, winCheckbox: Boolean, drawCheckbox: Boolean, lossCheckbox: Boolean) {
         game.title = gameTitle
         game.score = score
         game.win = winCheckbox
+        game.draw = drawCheckbox
+        game.loss = lossCheckbox
         game.goal = "Goals:" + view?.getTotalPlayerGoals( app.players.findAll())
         game.point = "Points:" + view?.getTotalPlayerPoints(app.players.findAll())
 

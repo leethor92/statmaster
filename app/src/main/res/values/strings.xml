@@ -49,7 +49,9 @@
     <string name="playerLostPossessions">Total Lost Possessions: </string>
     <string name="playerMissedPasses">Total Missed passes: </string>
     <string name="playerPasses">Total Passes: </string>
-    <string name="checkbox_win">Game Won</string>
+    <string name="checkbox_win">Won</string>
+    <string name="checkbox_draw">Draw</string>
+    <string name="checkbox_loss">Loss</string>
     <string name="title_activity_login"> Signup/Login to StatMaster</string>
     <string name="title_activity_game_list">Games</string>
     <string name="title_activity_player">Player</string>

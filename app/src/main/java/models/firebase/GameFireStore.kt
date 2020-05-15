@@ -39,6 +39,8 @@ class GameFireStore(val context: Context) : GameStore, AnkoLogger {
             foundGame.title = game.title
             foundGame.score = game.score
             foundGame.win = game.win
+            foundGame.draw = game.draw
+            foundGame.loss = game.loss
             foundGame.goal = game.goal
             foundGame.point = game.point
         }

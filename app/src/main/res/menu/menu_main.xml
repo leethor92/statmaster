@@ -25,6 +25,16 @@
         android:checkable="true"/>
 
     <item
+        android:id="@+id/item_drawnGames"
+        android:title="Show Drawn Games"
+        android:checkable="true"/>
+
+    <item
+        android:id="@+id/item_lostGames"
+        android:title="Show Lost Games"
+        android:checkable="true"/>
+
+    <item
         android:id="@+id/item_search"
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="always|collapseActionView"
