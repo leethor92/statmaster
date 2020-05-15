@@ -63,4 +63,5 @@
     <string name="hint_password">New Password</string>
     <string name="save_settings">Save Settings</string>
     <string name="vs">VS</string>
+    <string name="checkbox_error">Please select only one checkbox</string>
 </resources>

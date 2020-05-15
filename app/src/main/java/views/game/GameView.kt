@@ -87,7 +87,12 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
             R.id.item_save -> {
                 if (gameTitle.text.toString().isEmpty()) {
                     toast(R.string.enter_game_title)
-                } else {
+                }
+                else if ( (winCheckbox.isChecked && drawCheckbox.isChecked) || (lossCheckbox.isChecked)
+                        || (drawCheckbox.isChecked && lossCheckbox.isChecked)){
+                    toast(R.string.checkbox_error)
+                }
+                else {
                     presenter.doAddOrSave(gameTitle.text.toString(), score.text.toString(), winCheckbox.isChecked, drawCheckbox.isChecked, lossCheckbox.isChecked)
                 }
             }

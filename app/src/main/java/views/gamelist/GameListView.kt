@@ -15,10 +15,6 @@ class GameListView : BaseView(), GameListener {
 
     lateinit var presenter: GameListPresenter
 
-    var showWonGames = false
-    var showDrawnGames = false
-    var showLostGames = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_list)
