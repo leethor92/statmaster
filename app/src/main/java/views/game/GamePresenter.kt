@@ -41,8 +41,8 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         game.win = winCheckbox
         game.draw = drawCheckbox
         game.loss = lossCheckbox
-        game.goal = "Goals:" + view?.getTotalPlayerGoals( app.players.findAll())
-        game.point = "Points:" + view?.getTotalPlayerPoints(app.players.findAll())
+        game.goal = "Goals: " + view?.getTotalPlayerGoals( app.players.findAll())
+        game.point = "Points: " + view?.getTotalPlayerPoints(app.players.findAll())
 
         doAsync {
             if (edit) {
@@ -62,6 +62,9 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
 
     fun doDelete() {
         doAsync {
+            app.players.findAll().filter {it.gameId == game.id}.forEach {
+                app.players.delete(it)
+            }
             app.games.delete(game)
             uiThread {
                 view?.finish()

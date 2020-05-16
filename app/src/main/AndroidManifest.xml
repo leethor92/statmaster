@@ -33,9 +33,6 @@
 
             <activity android:name="views.player.PlayerView"
                 android:label="@string/title_activity_player">
-                <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".activities.GameView" />
             </activity>
 
         <activity android:name="views.settings.SettingsView"
