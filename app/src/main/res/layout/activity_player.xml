@@ -36,16 +36,17 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/appBarLayout"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="-1dp">
+            android:layout_marginTop="34dp"
+            android:layout_marginBottom="-34dp">
+
 
             <Button
                 android:id="@+id/chooseImage"
                 android:layout_width="379dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="256dp"
-                android:layout_marginEnd="19dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="152dp"
+                android:layout_marginEnd="16dp"
                 android:background="@color/colorAccent"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
@@ -53,17 +54,16 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerName" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/playerName"
-                android:layout_width="373dp"
-                android:layout_height="58dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="9dp"
+                android:layout_width="197dp"
+                android:layout_height="67dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="69dp"
+                android:layout_marginEnd="116dp"
                 android:hint="@string/hint_playerName"
                 android:inputType="text"
                 android:maxLength="25"
@@ -72,16 +72,15 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/number" />
+                app:layout_constraintStart_toEndOf="@+id/number"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/number"
-                android:layout_width="97dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="72dp"
+                android:layout_width="81dp"
+                android:layout_height="68dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="68dp"
                 android:autofillHints=""
                 android:background="@drawable/ic_jersey_vector"
                 android:gravity="center_horizontal"
@@ -95,186 +94,415 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/playerImage"
+                android:layout_width="89dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="69dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/playerName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher" />
+
             <TextView
-                android:id="@+id/playerPoints"
-                android:layout_width="105dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/playerPoints"
+                android:id="@+id/totalPoints"
+                android:layout_width="28dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintBottom_toTopOf="@+id/add_goal"
+                app:layout_constraintStart_toEndOf="@+id/add_point"
+                app:layout_constraintTop_toBottomOf="@+id/chooseImage"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/minus_point"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/ic_remove_circle_black_24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerName" />
+                app:layout_constraintTop_toBottomOf="@+id/chooseImage" />
+
+            <Button
+                android:id="@+id/add_point"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintStart_toEndOf="@+id/minus_point"
+                app:layout_constraintTop_toBottomOf="@+id/chooseImage" />
+
+            <TextView
+                android:id="@+id/accuracy"
+                android:layout_width="57dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="44dp"
+                android:gravity="center"
+                android:text="0.00"
+                app:layout_constraintBottom_toTopOf="@+id/add_goal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/points"
+                app:layout_constraintTop_toBottomOf="@+id/chooseImage"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/minus_goal"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/ic_remove_circle_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minus_point" />
+
+            <Button
+                android:id="@+id/add_goal"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/add_point"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="28dp"
+                android:layout_toEndOf="@id/minus_goal"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintStart_toEndOf="@+id/minus_goal"
+                app:layout_constraintTop_toBottomOf="@+id/add_point" />
+
+            <TextView
+                android:id="@+id/totalGoals"
+                android:layout_width="28dp"
+                android:layout_height="34dp"
+                android:layout_alignBottom="@id/totalPoints"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="150dp"
+                android:layout_toEndOf="@id/add_goal"
+                android:gravity="center"
+                android:text="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/add_goal"
+                app:layout_constraintTop_toBottomOf="@+id/add_point" />
+
+            <Button
+                android:id="@+id/minus_wide"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/minus_goal"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/ic_remove_circle_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minus_goal" />
+
+            <Button
+                android:id="@+id/add_wide"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/add_goal"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="28dp"
+                android:layout_toEndOf="@id/minus_wide"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintStart_toEndOf="@+id/minus_wide"
+                app:layout_constraintTop_toBottomOf="@+id/add_goal" />
+
+            <TextView
+                android:id="@+id/totalWides"
+                android:layout_width="28dp"
+                android:layout_height="34dp"
+                android:gravity="center"
+                android:layout_alignBottom="@id/totalPoints"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="150dp"
+                android:layout_toEndOf="@id/add_wide"
+                android:text="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/add_wide"
+                app:layout_constraintTop_toBottomOf="@+id/add_goal" />
+
+            <Button
+                android:id="@+id/minus_pass"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/ic_remove_circle_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minus_wide" />
+
+            <Button
+                android:id="@+id/add_pass"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintStart_toEndOf="@+id/minus_pass"
+                app:layout_constraintTop_toBottomOf="@+id/add_wide" />
+
+            <TextView
+                android:id="@+id/total_passes"
+                android:layout_width="28dp"
+                android:layout_height="34dp"
+                android:gravity="center"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:layout_toEndOf="@id/add_pass"
+                android:text="0"
+                app:layout_constraintStart_toEndOf="@+id/add_pass"
+                app:layout_constraintTop_toBottomOf="@+id/add_wide" />
+
+            <TextView
+                android:id="@+id/passingAccuracy"
+                android:layout_width="75dp"
+                android:layout_height="32dp"
+                android:layout_alignBottom="@id/total_passes"
+                android:layout_marginStart="23dp"
+                android:layout_marginEnd="44dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="0.00"
+                app:layout_constraintBottom_toTopOf="@+id/add_missed_pass"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/passes"
+                app:layout_constraintTop_toBottomOf="@+id/add_wide"
+                app:layout_constraintVertical_bias="0.906" />
+
+            <Button
+                android:id="@+id/minus_missed_pass"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/minus_pass"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/ic_remove_circle_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minus_pass" />
+
+            <Button
+                android:id="@+id/add_missed_pass"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/add_pass"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_toEndOf="@id/minus_pass"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintStart_toEndOf="@+id/minus_missed_pass"
+                app:layout_constraintTop_toBottomOf="@+id/add_pass" />
+
+            <TextView
+                android:id="@+id/total_missed_passes"
+                android:layout_width="28dp"
+                android:layout_height="34dp"
+                android:gravity="center"
+                android:layout_alignBottom="@id/total_passes"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="150dp"
+                android:layout_toEndOf="@id/add_missed_pass"
+                android:text="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/add_missed_pass"
+                app:layout_constraintTop_toBottomOf="@+id/add_pass" />
+
+            <Button
+                android:id="@+id/minus_possession"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/ic_remove_circle_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minus_missed_pass" />
+
+            <Button
+                android:id="@+id/add_possession"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/add_wide"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_toEndOf="@id/minus_possession"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintStart_toEndOf="@+id/minus_possession"
+                app:layout_constraintTop_toBottomOf="@+id/add_missed_pass" />
+
+            <TextView
+                android:id="@+id/total_possessions"
+                android:layout_width="28dp"
+                android:layout_height="34dp"
+                android:gravity="center"
+                android:layout_alignBottom="@id/totalWides"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_toEndOf="@id/add_possession"
+                android:text="0"
+                app:layout_constraintStart_toEndOf="@+id/add_possession"
+                app:layout_constraintTop_toBottomOf="@+id/add_missed_pass" />
+
+            <TextView
+                android:id="@+id/retention"
+                android:layout_width="87dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="83dp"
+                android:layout_marginEnd="24dp"
+                android:layout_toEndOf="@id/total_possessions"
+                android:gravity="center"
+                android:text="0.00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/possessions"
+                app:layout_constraintTop_toBottomOf="@+id/passingAccuracy" />
+
+            <Button
+                android:id="@+id/minus_lost_possession"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/minus_possession"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/ic_remove_circle_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/minus_possession" />
+
+            <Button
+                android:id="@+id/add_lost_possession"
+                android:layout_width="49dp"
+                android:layout_height="31dp"
+                android:layout_alignBottom="@id/add_possession"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="28dp"
+                android:layout_toEndOf="@id/minus_possession"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                app:layout_constraintStart_toEndOf="@+id/minus_lost_possession"
+                app:layout_constraintTop_toBottomOf="@+id/add_possession" />
+
+            <TextView
+                android:id="@+id/totalLostPossessions"
+                android:layout_width="28dp"
+                android:layout_height="34dp"
+                android:gravity="center"
+                android:layout_alignBottom="@id/total_possessions"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="150dp"
+                android:layout_toEndOf="@id/add_possession"
+                android:text="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/add_lost_possession"
+                app:layout_constraintTop_toBottomOf="@+id/add_possession" />
 
             <TextView
                 android:id="@+id/points"
-                android:layout_width="84dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="142dp"
-                android:text="0"
+                android:layout_width="65dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="127dp"
+                android:layout_toEndOf="@id/add_point"
+                android:gravity="center"
+                android:text="@string/point_total"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/playerPoints"
-                app:layout_constraintTop_toBottomOf="@+id/playerName" />
-
-            <TextView
-                android:id="@+id/playerGoals"
-                android:layout_width="105dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/playerGoals"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerPoints" />
+                app:layout_constraintStart_toEndOf="@+id/totalPoints"
+                app:layout_constraintTop_toBottomOf="@+id/chooseImage" />
 
             <TextView
                 android:id="@+id/goals"
-                android:layout_width="86dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="142dp"
-                android:text="0"
+                android:layout_width="65dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="127dp"
+                android:layout_toEndOf="@id/add_point"
+                android:gravity="center"
+                android:text="@string/goal_total"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/playerGoals"
+                app:layout_constraintStart_toEndOf="@+id/totalGoals"
                 app:layout_constraintTop_toBottomOf="@+id/points" />
 
             <TextView
-                android:id="@+id/playerWides"
-                android:layout_width="105dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/playerWides"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerGoals" />
-
-            <TextView
                 android:id="@+id/wides"
-                android:layout_width="87dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="142dp"
-                android:text="0"
+                android:layout_width="65dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="27dp"
+                android:layout_marginEnd="127dp"
+                android:layout_toEndOf="@id/add_point"
+                android:gravity="center"
+                android:text="@string/wide_total"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/playerWides"
+                app:layout_constraintStart_toEndOf="@+id/totalWides"
                 app:layout_constraintTop_toBottomOf="@+id/goals" />
 
             <TextView
-                android:id="@+id/playerPasses"
-                android:layout_width="105dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/playerPasses"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerWides" />
-
-            <TextView
                 android:id="@+id/passes"
-                android:layout_width="87dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="142dp"
-                android:text="0"
+                android:layout_width="65dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="27dp"
+                android:layout_marginEnd="127dp"
+                android:layout_toEndOf="@id/add_point"
+                android:gravity="center"
+                android:text="@string/pass_total"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/playerPasses"
+                app:layout_constraintStart_toEndOf="@+id/total_passes"
                 app:layout_constraintTop_toBottomOf="@+id/wides" />
 
             <TextView
-                android:id="@+id/playerMissedPasses"
-                android:layout_width="97dp"
-                android:layout_height="38dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="148dp"
-                android:layout_marginEnd="7dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/playerMissedPasses"
-                app:layout_constraintBottom_toTopOf="@+id/playerLostPossessions"
-                app:layout_constraintEnd_toStartOf="@+id/missedPasses"
-                app:layout_constraintStart_toEndOf="@+id/passes"
-                app:layout_constraintTop_toBottomOf="@+id/playerName" />
-
-            <TextView
                 android:id="@+id/missedPasses"
-                android:layout_width="71dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="148dp"
-                android:layout_marginBottom="33dp"
-                android:text="0"
-                app:layout_constraintBottom_toTopOf="@+id/lostPossessions"
+                android:layout_width="65dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="127dp"
+                android:layout_toEndOf="@id/add_point"
+                android:gravity="center"
+                android:text="@string/missed_pass_total"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/playerMissedPasses"
-                app:layout_constraintTop_toBottomOf="@+id/playerName" />
-
-            <TextView
-                android:id="@+id/playerPossessions"
-                android:layout_width="106dp"
-                android:layout_height="39dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="21dp"
-                android:text="@string/playerPossessions"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/playerPasses" />
-
-            <TextView
-                android:id="@+id/possessions"
-                android:layout_width="82dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="27dp"
-                android:layout_marginEnd="142dp"
-                android:text="0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/playerPossessions"
+                app:layout_constraintStart_toEndOf="@+id/total_missed_passes"
                 app:layout_constraintTop_toBottomOf="@+id/passes" />
 
             <TextView
-                android:id="@+id/playerLostPossessions"
-                android:layout_width="100dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="71dp"
-                android:layout_marginBottom="12dp"
-                android:text="@string/playerLostPossessions"
-                app:layout_constraintBottom_toTopOf="@+id/chooseImage"
+                android:id="@+id/possessions"
+                android:layout_width="65dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="27dp"
+                android:layout_marginEnd="127dp"
+                android:layout_toEndOf="@id/add_point"
+                android:gravity="center"
+                android:text="@string/possession_total"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/possessions"
-                app:layout_constraintTop_toBottomOf="@+id/playerMissedPasses" />
+                app:layout_constraintStart_toEndOf="@+id/total_possessions"
+                app:layout_constraintTop_toBottomOf="@+id/missedPasses" />
 
             <TextView
                 android:id="@+id/lostPossessions"
-                android:layout_width="60dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="22dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="28dp"
-                android:text="0"
-                app:layout_constraintBottom_toTopOf="@+id/chooseImage"
+                android:layout_width="122dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="71dp"
+                android:layout_toEndOf="@id/add_point"
+                android:gravity="center"
+                android:text="@string/playerLostPossessions"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.555"
-                app:layout_constraintStart_toEndOf="@+id/playerLostPossessions" />
-
-            <ImageView
-                android:id="@+id/playerImage"
-                android:layout_width="403dp"
-                android:layout_height="153dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginEnd="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chooseImage"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:layout_constraintStart_toEndOf="@+id/totalLostPossessions"
+                app:layout_constraintTop_toBottomOf="@+id/possessions" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
