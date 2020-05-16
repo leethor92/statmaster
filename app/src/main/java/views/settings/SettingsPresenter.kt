@@ -15,7 +15,7 @@ class SettingsPresenter(view: BaseView): BasePresenter(view) {
                 FirebaseAuth.getInstance().currentUser?.updatePassword(password)?.addOnCompleteListener(view!!) { task2 ->
                     if (task2.isSuccessful) {
                         view?.hideProgress()
-                        view?.navigateTo(VIEW.LIST, 0)
+                        view?.navigateTo(VIEW.TEAMLIST, 0)
                     }
                     else {
                         view?.hideProgress()

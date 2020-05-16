@@ -2,11 +2,12 @@ package models
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity
+@Entity(foreignKeys = [ForeignKey(entity = TeamModel::class, parentColumns = ["id"], childColumns = ["teamId"])])
 data class GameModel(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var fbId : String = "",
@@ -16,4 +17,5 @@ data class GameModel(
     var point: String = "",
     var win: Boolean = false,
     var draw: Boolean = false,
-    var loss: Boolean = false) : Parcelable
+    var loss: Boolean = false,
+    var teamId: Long = 0) : Parcelable

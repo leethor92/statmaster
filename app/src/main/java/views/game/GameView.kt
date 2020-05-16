@@ -88,7 +88,7 @@ class GameView : BaseView() , AnkoLogger, PlayerListener {
                 if (gameTitle.text.toString().isEmpty()) {
                     toast(R.string.enter_game_title)
                 }
-                else if ( (winCheckbox.isChecked && drawCheckbox.isChecked) || (lossCheckbox.isChecked)
+                else if ( (winCheckbox.isChecked && drawCheckbox.isChecked) || (winCheckbox.isChecked && lossCheckbox.isChecked)
                         || (drawCheckbox.isChecked && lossCheckbox.isChecked)){
                     toast(R.string.checkbox_error)
                 }

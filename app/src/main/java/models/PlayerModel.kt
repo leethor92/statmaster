@@ -8,7 +8,9 @@ import kotlinx.android.parcel.Parcelize
 import models.GameModel
 
 @Parcelize
-@Entity(foreignKeys = [ForeignKey(entity = GameModel::class, parentColumns = ["id"], childColumns = ["gameId"])])
+@Entity(foreignKeys = [ForeignKey(entity = GameModel::class, parentColumns = ["id"], childColumns = ["gameId"]),
+    ForeignKey(entity = TeamModel::class, parentColumns = ["id"], childColumns = ["teamId"])]
+)
 data class PlayerModel(
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var fbId : String = "",
@@ -19,6 +21,7 @@ data class PlayerModel(
     var goal: Int = 0,
     var wide: Int = 0,
     var gameId: Long = 0,
+    var teamId: Long = 0,
     var possession: Int = 0,
     var lostPossession: Int = 0,
     var pass: Int = 0,

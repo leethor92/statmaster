@@ -7,28 +7,31 @@ import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import models.GameModel
 import models.PlayerModel
+import models.TeamModel
 import org.jetbrains.anko.AnkoLogger
 import org.wit.statmaster.activities.GameView
-import views.gamelist.GameListView
 import views.login.LoginView
 import views.player.PlayerView
 import views.settings.SettingsView
+import views.team.TeamView
+import views.teamlist.TeamListView
 
 val IMAGE_REQUEST = 1
 
 enum class VIEW {
-    GAME, PLAYER, LIST, LOGIN, SETTINGS
+    TEAMLIST, TEAM, GAME, PLAYER, LOGIN, SETTINGS
 }
 
-open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
+abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     var basePresenter: BasePresenter? = null
 
     fun navigateTo(view: VIEW, code: Int = 0, key: String = "", value: Parcelable? = null) {
-        var intent = Intent(this, GameListView::class.java)
+        var intent = Intent(this, TeamListView::class.java)
         when (view) {
+            VIEW.TEAM -> intent = Intent(this, TeamView::class.java)
+            VIEW.TEAMLIST -> intent = Intent(this, TeamListView::class.java)
             VIEW.GAME -> intent = Intent(this, GameView::class.java)
             VIEW.PLAYER -> intent = Intent(this, PlayerView::class.java)
-            VIEW.LIST -> intent = Intent(this, GameListView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
             VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
         }
@@ -70,6 +73,8 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         basePresenter?.doRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
+    open fun showTeam(team: TeamModel) {}
+    open fun showTeams(teams: List<TeamModel>) {}
     open fun showGame(game: GameModel, totalPlayerGoals: Int, totalPlayerPoints: Int) {}
     open fun showGames(games: List<GameModel>) {}
     open fun showPlayer(player: PlayerModel) {}

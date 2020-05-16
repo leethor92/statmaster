@@ -3,6 +3,7 @@ package views.login
 import com.google.firebase.auth.FirebaseAuth
 import models.firebase.GameFireStore
 import models.firebase.PlayerFireStore
+import models.firebase.TeamFireStore
 import org.jetbrains.anko.toast
 import views.BasePresenter
 import views.BaseView
@@ -13,8 +14,14 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
     var gameFireStore: GameFireStore? = null
     var playerFireStore: PlayerFireStore? = null
+    var teamFireStore: TeamFireStore? = null
 
     init {
+
+        if (app.teams is TeamFireStore) {
+            teamFireStore = app.teams as TeamFireStore
+        }
+
         if (app.games is GameFireStore )  {
             gameFireStore = app.games as GameFireStore
         }
@@ -31,25 +38,37 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
                 if (gameFireStore != null) {
                     gameFireStore!!.fetchGames {
                         view?.hideProgress()
-                        view?.navigateTo(VIEW.LIST)
+                        view?.navigateTo(VIEW.TEAMLIST)
                     }
                 }
                 else
                 {
                     view?.hideProgress()
-                    view?.navigateTo(VIEW.LIST)
+                    view?.navigateTo(VIEW.TEAMLIST)
                 }
 
                 if (playerFireStore != null ) {
                     playerFireStore!!.fetchPlayers {
                         view?.hideProgress()
-                        view?.navigateTo(VIEW.LIST)
+                        view?.navigateTo(VIEW.TEAMLIST)
                     }
                 }
                 else
                 {
                     view?.hideProgress()
-                    view?.navigateTo(VIEW.LIST)
+                    view?.navigateTo(VIEW.TEAMLIST)
+                }
+
+                if (teamFireStore != null ) {
+                    teamFireStore!!.fetchTeams {
+                        view?.hideProgress()
+                        view?.navigateTo(VIEW.TEAMLIST)
+                    }
+                }
+                else
+                {
+                    view?.hideProgress()
+                    view?.navigateTo(VIEW.TEAMLIST)
                 }
 
             } else {
@@ -64,7 +83,7 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(view!!) { task ->
             if (task.isSuccessful) {
                 view?.hideProgress()
-                view?.navigateTo(VIEW.LIST)
+                view?.navigateTo(VIEW.TEAMLIST)
             } else {
                 view?.hideProgress()
                 view?.toast("Sign Up Failed: ${task.exception?.message}")

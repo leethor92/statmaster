@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Statmaster</string>
+    <string name="hint_teamName">Team Name</string>
     <string name="button_addGame">Add Game</string>
     <string name="hint_gameTitle">Game Title</string>
     <string name="hint_gameScore">Opposition Score</string>
@@ -9,6 +10,7 @@
     <string name="hint_playerName">Name</string>
     <string name="hint_playerNumber">Number</string>
     <string name="menu_cancelPlayer">Cancel</string>
+    <string name="enter_team_title"> Please enter a Team Name </string>
     <string name="enter_game_title"> Please enter a Game Title </string>
     <string name="enter_player_title"> Please enter a Player Name </string>
     <string name="save_player"> Save Player </string>
@@ -53,7 +55,8 @@
     <string name="checkbox_draw">Draw</string>
     <string name="checkbox_loss">Loss</string>
     <string name="title_activity_login"> Signup/Login to StatMaster</string>
-    <string name="title_activity_game_list">Games</string>
+    <string name="title_activity_team_list">Teams</string>
+    <string name="title_activity_team">Team</string>
     <string name="title_activity_player">Player</string>
     <string name="title_activity_game">Game</string>
     <string name="title_activity_settings">Settings</string>

@@ -25,10 +25,10 @@
             </activity>
 
             <activity android:name=".activities.GameView"
-                android:label="@string/title_activity_game_list">
+                android:label="@string/title_activity_game">
                 <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="views.gamelist.GameListView" />
+                    android:value="views.team.TeamView" />
             </activity>
 
             <activity android:name="views.player.PlayerView"
@@ -39,13 +39,20 @@
             android:label="@string/title_activity_settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="views.gamelist.GameListView" />
+                android:value="views.teamlist.TeamListView" />
         </activity>
 
-            <activity android:name="views.gamelist.GameListView"
-                android:label="@string/title_activity_game_list"
+            <activity android:name="views.teamlist.TeamListView"
+                android:label="@string/title_activity_team_list"
                 android:launchMode="singleTop">
             </activity>
+
+        <activity android:name="views.team.TeamView"
+            android:label="@string/title_activity_team">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="views.teamlist.TeamListView" />
+        </activity>
 
 
     </application>

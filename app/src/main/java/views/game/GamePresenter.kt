@@ -3,6 +3,7 @@ package org.wit.placemark.activities
 import main.MainApp
 import models.GameModel
 import models.PlayerModel
+import models.TeamModel
 import org.jetbrains.anko.*
 import views.BasePresenter
 import views.BaseView
@@ -12,6 +13,7 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
 
     var game = GameModel()
     var edit = false;
+    var team = TeamModel()
 
     init {
         app = view.application as MainApp
@@ -20,14 +22,19 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
             val players = app.players.findAll()
             uiThread {
 
-            if (view.intent.hasExtra("game_edit")) {
-                edit = true
-                game = view.intent.extras?.getParcelable<GameModel>("game_edit")!!
-                var totalPlayerPoints = view.getTotalPlayerPoints(players)
-                var totalPlayerGoals = view.getTotalPlayerGoals(players)
-                view.showGame(game, totalPlayerGoals, totalPlayerPoints)
-                    }
+                if (view.intent.hasExtra("game_edit")) {
+                    edit = true
+                    game = view.intent.extras?.getParcelable<GameModel>("game_edit")!!
+                    team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
+                    var totalPlayerPoints = view.getTotalPlayerPoints(players)
+                    var totalPlayerGoals = view.getTotalPlayerGoals(players)
+                    view.showGame(game, totalPlayerGoals, totalPlayerPoints)
                 }
+                else
+                {
+                    team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
+                }
+            }
         }
     }
 
@@ -40,6 +47,7 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         game.score = score
         game.win = winCheckbox
         game.draw = drawCheckbox
+        game.teamId = team.id
         game.loss = lossCheckbox
         game.goal = "Goals: " + view?.getTotalPlayerGoals( app.players.findAll())
         game.point = "Points: " + view?.getTotalPlayerPoints(app.players.findAll())
