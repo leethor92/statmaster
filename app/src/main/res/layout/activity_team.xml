@@ -35,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/appBarLayout"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="46dp"
-        android:layout_marginBottom="-46dp">
+        android:layout_marginTop="83dp"
+        android:layout_marginBottom="-83dp">
 
       <EditText
           android:id="@+id/teamName"
@@ -58,24 +58,9 @@
           app:layout_constraintTop_toTopOf="parent" />
 
       <Button
-          android:id="@+id/addGame"
-          android:layout_width="150dp"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="18dp"
-          android:layout_marginTop="21dp"
-          android:background="@color/colorAccent"
-          android:paddingTop="8dp"
-          android:paddingBottom="8dp"
-          android:text="@string/button_addGame"
-          android:textColor="@color/colorPrimary"
-          android:textSize="16sp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/teamName" />
-
-      <Button
           android:id="@+id/addPlayer"
-          android:layout_width="150dp"
-          android:layout_height="wrap_content"
+          android:layout_width="154dp"
+          android:layout_height="51dp"
           android:layout_gravity="center"
           android:layout_marginTop="20dp"
           android:layout_marginEnd="17dp"
@@ -88,13 +73,29 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/teamName" />
 
+      <Button
+          android:id="@+id/changeColour"
+          android:layout_width="154dp"
+          android:layout_height="51dp"
+          android:layout_gravity="center"
+          android:layout_marginStart="24dp"
+          android:layout_marginTop="20dp"
+          android:background="@color/colorAccent"
+          android:paddingTop="8dp"
+          android:paddingBottom="8dp"
+          android:text="@string/change_team_colour"
+          android:textColor="@color/colorPrimary"
+          android:textSize="16sp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/teamName" />
+
       <ScrollView
           android:id="@+id/scrollView2"
-          android:layout_width="374dp"
-          android:layout_height="421dp"
+          android:layout_width="364dp"
+          android:layout_height="458dp"
           android:layout_below="@id/addPlayer"
           android:layout_marginStart="15dp"
-          android:layout_marginTop="116dp"
+          android:layout_marginTop="25dp"
           android:layout_marginEnd="15dp"
           android:fillViewport="true"
           app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +103,7 @@
           app:layout_constraintTop_toBottomOf="@+id/addPlayer">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerView1"
             android:layout_width="410dp"
             android:layout_height="427dp"
             android:scrollbars="vertical"

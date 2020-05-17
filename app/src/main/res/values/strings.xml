@@ -7,6 +7,9 @@
     <string name="menu_addGame">Add</string>
     <string name="menu_addPlayer">Add Player</string>
     <string name="button_addPlayer">Add Player</string>
+    <string name="button_showPlayers">Show Players</string>
+    <string name="change_team_colour">Change Colour</string>
+    <string name="title_activity_game_list">Games</string>
     <string name="hint_playerName">Name</string>
     <string name="hint_playerNumber">Number</string>
     <string name="menu_cancelPlayer">Cancel</string>

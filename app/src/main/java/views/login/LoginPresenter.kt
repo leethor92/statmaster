@@ -38,37 +38,37 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
                 if (gameFireStore != null) {
                     gameFireStore!!.fetchGames {
                         view?.hideProgress()
-                        view?.navigateTo(VIEW.TEAMLIST)
+                        view?.navigateTo(VIEW.LIST)
                     }
                 }
                 else
                 {
                     view?.hideProgress()
-                    view?.navigateTo(VIEW.TEAMLIST)
+                    view?.navigateTo(VIEW.LIST)
                 }
 
                 if (playerFireStore != null ) {
                     playerFireStore!!.fetchPlayers {
                         view?.hideProgress()
-                        view?.navigateTo(VIEW.TEAMLIST)
+                        view?.navigateTo(VIEW.LIST)
                     }
                 }
                 else
                 {
                     view?.hideProgress()
-                    view?.navigateTo(VIEW.TEAMLIST)
+                    view?.navigateTo(VIEW.LIST)
                 }
 
                 if (teamFireStore != null ) {
                     teamFireStore!!.fetchTeams {
                         view?.hideProgress()
-                        view?.navigateTo(VIEW.TEAMLIST)
+                        view?.navigateTo(VIEW.LIST)
                     }
                 }
                 else
                 {
                     view?.hideProgress()
-                    view?.navigateTo(VIEW.TEAMLIST)
+                    view?.navigateTo(VIEW.LIST)
                 }
 
             } else {
@@ -83,7 +83,7 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(view!!) { task ->
             if (task.isSuccessful) {
                 view?.hideProgress()
-                view?.navigateTo(VIEW.TEAMLIST)
+                view?.navigateTo(VIEW.LIST)
             } else {
                 view?.hideProgress()
                 view?.toast("Sign Up Failed: ${task.exception?.message}")

@@ -25,21 +25,12 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
                 if (view.intent.hasExtra("game_edit")) {
                     edit = true
                     game = view.intent.extras?.getParcelable<GameModel>("game_edit")!!
-                    team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
                     var totalPlayerPoints = view.getTotalPlayerPoints(players)
                     var totalPlayerGoals = view.getTotalPlayerGoals(players)
                     view.showGame(game, totalPlayerGoals, totalPlayerPoints)
                 }
-                else
-                {
-                    team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
-                }
             }
         }
-    }
-
-    fun doEditPlayer(player: PlayerModel, game: GameModel) {
-        view?.startActivityForResult(view?.intentFor<PlayerView>()?.putExtra("player_edit", player)?.putExtra("game_data", game), 0)
     }
 
     fun doAddOrSave(gameTitle: String, score: String, winCheckbox: Boolean, drawCheckbox: Boolean, lossCheckbox: Boolean) {
@@ -47,7 +38,6 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         game.score = score
         game.win = winCheckbox
         game.draw = drawCheckbox
-        game.teamId = team.id
         game.loss = lossCheckbox
         game.goal = "Goals: " + view?.getTotalPlayerGoals( app.players.findAll())
         game.point = "Points: " + view?.getTotalPlayerPoints(app.players.findAll())
@@ -68,6 +58,7 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         view?.finish()
     }
 
+
     fun doDelete() {
         doAsync {
             app.players.findAll().filter {it.gameId == game.id}.forEach {
@@ -78,20 +69,6 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
                 view?.finish()
             }
         }
-    }
-
-    fun loadPlayers() {
-        doAsync {
-            val players = app.players.findAll()
-            uiThread {
-                view?.showPlayers(players)
-            }
-        }
-    }
-
-    fun loadPlayersSearch(containingString: String)
-    {
-        view?.showPlayers(app.players.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) })
     }
 
 }

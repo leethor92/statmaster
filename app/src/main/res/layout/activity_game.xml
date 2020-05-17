@@ -159,37 +159,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/score" />
 
-            <Button
-                android:id="@+id/addPlayer"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="121dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="140dp"
-                android:background="@color/colorAccent"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="@string/button_addPlayer"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/winCheckbox" />
-
             <ScrollView
                 android:id="@+id/scrollView"
-                android:layout_width="369dp"
-                android:layout_height="677dp"
-                android:layout_below="@id/addPlayer"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="15dp"
+                android:layout_width="331dp"
+                android:layout_height="429dp"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="42dp"
                 android:fillViewport="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addPlayer">
+                app:layout_constraintTop_toBottomOf="@+id/winCheckbox">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView1"

@@ -1,4 +1,4 @@
-package views.team
+package views.gamelist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import models.TeamModel
 import org.wit.statmaster.R
 
 interface GameListener {
-    fun onGameClick(game: GameModel, team: TeamModel)
+    fun onGameClick(game: GameModel)
 }
 
 class GameAdapter constructor(
@@ -30,20 +30,19 @@ class GameAdapter constructor(
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val game = games[holder.adapterPosition]
-        val team = TeamModel()
-        holder.bind(game, team, listener)
+        holder.bind(game, listener)
     }
 
     override fun getItemCount(): Int = games.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(game: GameModel, team: TeamModel, listener: GameListener) {
+        fun bind(game: GameModel, listener: GameListener) {
             itemView.gameTitle.text = game.title
             itemView.score.text = game.score
             itemView.gameGoals.text = game.goal
             itemView.gamePoints.text = game.point
-            itemView.setOnClickListener { listener.onGameClick(game, team) }
+            itemView.setOnClickListener { listener.onGameClick(game) }
         }
     }
 }

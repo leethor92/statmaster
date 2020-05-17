@@ -4,6 +4,7 @@ import android.content.Intent
 import helpers.showImagePicker
 import models.GameModel
 import models.PlayerModel
+import models.TeamModel
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import views.BasePresenter
@@ -15,6 +16,7 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
 
     var player = PlayerModel()
     var game = GameModel()
+    var team = TeamModel()
 
     var edit = false;
 
@@ -24,14 +26,11 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
             game = view.intent.extras?.getParcelable<GameModel>("game_data")!!
 
-            player.gameId = game.id
-
             view.showPlayer(player)
         }
         else
         {
-            game = view.intent.extras?.getParcelable<GameModel>("game_data")!!
-            player.gameId = game.id
+            team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
         }
 
     }
@@ -45,6 +44,14 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         player.possession = possessions
         player.pass = passes
         player.gameId = game.id
+
+        if (edit) {
+            player.teamId = game.teamId
+        }
+        else
+        {
+            player.teamId = team.id
+        }
         player.lostPossession = lostPossessions
         player.missedPass = missedPasses
         player.accuracy = accuracy
@@ -54,6 +61,7 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         doAsync {
         if (edit) {
             app.players.update(player)
+
         } else {
             app.players.create(player)
         }

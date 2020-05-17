@@ -28,7 +28,7 @@
                 android:label="@string/title_activity_game">
                 <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="views.team.TeamView" />
+                    android:value="views.gamelist.GameListView" />
             </activity>
 
             <activity android:name="views.player.PlayerView"
@@ -54,7 +54,10 @@
                 android:value="views.teamlist.TeamListView" />
         </activity>
 
-
+        <activity android:name="views.gamelist.GameListView"
+            android:label="@string/title_activity_game_list"
+            android:launchMode="singleTop">
+        </activity>
     </application>
 
 </manifest>

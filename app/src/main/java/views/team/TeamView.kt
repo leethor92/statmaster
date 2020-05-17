@@ -6,8 +6,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_team.*
+import kotlinx.android.synthetic.main.activity_team.recyclerView1
 import models.GameModel
+import models.PlayerModel
 import models.TeamModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.intentFor
@@ -15,8 +18,11 @@ import org.jetbrains.anko.toast
 import org.wit.statmaster.R
 import org.wit.statmaster.activities.GameView
 import views.BaseView
+import views.gamelist.GameAdapter
+import views.gamelist.GameListener
+import views.player.PlayerView
 
-class TeamView : BaseView() , AnkoLogger, GameListener {
+class TeamView : BaseView() , AnkoLogger, PlayerListener {
 
   var team = TeamModel()
   lateinit var presenter: TeamPresenter
@@ -30,11 +36,11 @@ class TeamView : BaseView() , AnkoLogger, GameListener {
     presenter = initPresenter (TeamPresenter(this)) as TeamPresenter
 
     val layoutManager = LinearLayoutManager(this)
-    recyclerView.layoutManager = layoutManager
-    presenter.loadGames()
+    recyclerView1.layoutManager = layoutManager
+    presenter.loadPlayers()
 
-    addGame.setOnClickListener {
-      startActivity(intentFor<GameView>().putExtra("team_data", presenter.team))
+    addPlayer.setOnClickListener {
+      startActivity(intentFor<PlayerView>().putExtra("team_data", presenter.team))
       finish()
     }
   }
@@ -47,16 +53,16 @@ class TeamView : BaseView() , AnkoLogger, GameListener {
     menuInflater.inflate(R.menu.menu_team, menu)
 
     val searchView: SearchView = menu?.findItem(R.id.item_search)?.actionView as SearchView
-    searchView.queryHint = "Search for a Game"
+    searchView.queryHint = "Search for a Player"
     searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
       override fun onQueryTextChange(newText: String): Boolean {
-        presenter.loadGamesSearch(newText)
+        presenter.loadPlayersSearch(newText!!)
         return false
       }
 
       override fun onQueryTextSubmit(query: String): Boolean {
-        if (query.isBlank() || query.isEmpty()) presenter.loadGames()
-        else presenter.loadGamesSearch(query)
+        if (query.isBlank() || query.isEmpty()) presenter.loadPlayers()
+        else presenter.loadPlayersSearch(query)
         return false
       }
     })
@@ -80,33 +86,21 @@ class TeamView : BaseView() , AnkoLogger, GameListener {
           presenter.doAddOrSave(teamName.text.toString())
         }
       }
-      R.id.item_wonGames -> {
-        item.isChecked = !item.isChecked
-        presenter.doShowWonGames(item.isChecked)
-      }
-      R.id.item_drawnGames -> {
-        item.isChecked = !item.isChecked
-        presenter.doShowDrawnGames(item.isChecked)
-      }
-      R.id.item_lostGames -> {
-        item.isChecked = !item.isChecked
-        presenter.doShowLostGames(item.isChecked)
-      }
     }
     return super.onOptionsItemSelected(item)
   }
 
-  override fun onGameClick(game: GameModel, team: TeamModel) {
-    presenter.doEditGame(game, presenter.team)
+  override fun onPlayerClick(player: PlayerModel, game: GameModel) {
+    presenter.doEditPlayer(player, presenter.team)
   }
 
-  override fun showGames (games: List<GameModel>) {
-    recyclerView.adapter = GameAdapter(games.filter { it.teamId == presenter.team.id }, this)
-    recyclerView.adapter?.notifyDataSetChanged()
+  override fun showPlayers (players: List<PlayerModel>) {
+    recyclerView1.adapter = PlayerAdapter(players.filter { it.teamId == presenter.team.id }, this)
+    recyclerView1.adapter?.notifyDataSetChanged()
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    presenter.loadGames()
+    presenter.loadPlayers()
     super.onActivityResult(requestCode, resultCode, data)
   }
 }

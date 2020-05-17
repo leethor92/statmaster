@@ -1,16 +1,14 @@
-package views.game
+package views.team
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import helpers.readImageFromPath
 import kotlinx.android.synthetic.main.card_player.view.*
 import models.GameModel
 import models.PlayerModel
 import org.wit.statmaster.R
-import kotlin.math.round
 
 
 interface PlayerListener {
