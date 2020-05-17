@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_game_list.*
 import models.GameModel
 import org.wit.statmaster.R
@@ -25,6 +26,9 @@ class GameListView : BaseView(), GameListener {
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     presenter.loadGames()
+
+    val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNav)
+    bottomNavView.setOnNavigationItemSelectedListener { menuItem -> onOptionsItemSelected(menuItem) }
   }
 
   override fun showGames(games: List<GameModel>) {
@@ -57,7 +61,8 @@ class GameListView : BaseView(), GameListener {
     when (item?.itemId) {
       R.id.item_add -> presenter.doAddGame()
       R.id.item_logout ->presenter.doLogout()
-      R.id.item_settings ->presenter.doSettings()
+      R.id.item_user ->presenter.doSettings()
+      R.id.item_team -> presenter.doTeams()
       R.id.item_wonGames -> {
         item.isChecked = !item.isChecked
         presenter.doShowWonGames(item.isChecked)

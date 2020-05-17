@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide.init
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -40,5 +41,17 @@ class SettingsView: BaseView(), AnkoLogger {
                 presenter.doUpdateSettings(settingsEmail.text.toString(), settingsPassword.text.toString())
             }
         }
+
+        val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNav)
+        bottomNavView.setOnNavigationItemSelectedListener { menuItem -> onOptionsItemSelected(menuItem) }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_logout -> presenter.doLogout()
+            R.id.item_game -> presenter.doGame()
+            R.id.item_team -> presenter.doTeam()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

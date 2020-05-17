@@ -24,7 +24,7 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         if (view.intent.hasExtra("player_edit")) {
             edit = true
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
-            game = view.intent.extras?.getParcelable<GameModel>("game_data")!!
+            team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
 
             view.showPlayer(player)
         }
@@ -44,14 +44,7 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         player.possession = possessions
         player.pass = passes
         player.gameId = game.id
-
-        if (edit) {
-            player.teamId = game.teamId
-        }
-        else
-        {
-            player.teamId = team.id
-        }
+        player.teamId = team.id
         player.lostPossession = lostPossessions
         player.missedPass = missedPasses
         player.accuracy = accuracy

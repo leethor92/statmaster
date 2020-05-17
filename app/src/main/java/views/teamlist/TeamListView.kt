@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_team_list.*
 import models.TeamModel
 import org.wit.statmaster.R
@@ -26,6 +27,9 @@ class TeamListView : BaseView(), TeamListener {
     val layoutManager = LinearLayoutManager(this)
     teamRecyclerView.layoutManager = layoutManager
     presenter.loadTeams()
+
+    val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNav)
+    bottomNavView.setOnNavigationItemSelectedListener { menuItem -> onOptionsItemSelected(menuItem) }
   }
 
   override fun showTeams(teams: List<TeamModel>) {
@@ -34,7 +38,7 @@ class TeamListView : BaseView(), TeamListener {
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    menuInflater.inflate(R.menu.menu_main, menu)
+    menuInflater.inflate(R.menu.menu_teamlist, menu)
 
     val searchView: SearchView = menu?.findItem(R.id.item_search)?.actionView as SearchView
     searchView.queryHint = "Search for a Team"
@@ -58,7 +62,8 @@ class TeamListView : BaseView(), TeamListener {
     when (item.itemId) {
       R.id.item_add -> presenter.doAddTeam()
       R.id.item_logout -> presenter.doLogout()
-      R.id.item_settings ->presenter.doSettings()
+      R.id.item_user ->  presenter.doSettings()
+      R.id.item_game -> presenter.doGame()
     }
     return super.onOptionsItemSelected(item)
   }

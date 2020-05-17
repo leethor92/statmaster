@@ -11,6 +11,7 @@ import views.BasePresenter
 import views.BaseView
 import views.VIEW
 import views.settings.SettingsView
+import views.teamlist.TeamListView
 
 class GameListPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -20,6 +21,10 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
 
   fun doSettings() {
     view?.startActivityForResult<SettingsView>(0)
+  }
+
+  fun doTeams() {
+    view?.startActivityForResult<TeamListView>(0)
   }
 
   fun doEditGame(game: GameModel) {

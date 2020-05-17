@@ -9,6 +9,7 @@ import org.jetbrains.anko.uiThread
 import views.BasePresenter
 import views.BaseView
 import views.VIEW
+import views.gamelist.GameListView
 import views.settings.SettingsView
 import views.team.TeamView
 
@@ -16,6 +17,10 @@ class TeamListPresenter(view: BaseView) : BasePresenter(view) {
 
   fun doAddTeam() {
     view?.startActivityForResult<TeamView>(0)
+  }
+
+  fun doGame() {
+    view?.startActivityForResult<GameListView>(0)
   }
 
   fun doSettings() {
