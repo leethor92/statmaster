@@ -37,6 +37,7 @@ class TeamFireStore(val context: Context) : TeamStore, AnkoLogger {
     var foundTeam: TeamModel? = teams.find { t -> t.fbId == team.fbId }
     if (foundTeam != null) {
       foundTeam.name = team.name
+      foundTeam.players = team.players
     }
 
     db.child("users").child(userId).child("teams").child(team.fbId).setValue(team)

@@ -1,6 +1,7 @@
 package models
 
 import android.os.Parcelable
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
@@ -10,5 +11,6 @@ import kotlinx.android.parcel.Parcelize
 data class TeamModel (
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var fbId : String = "",
-    var name: String = ""
+    var name: String = "",
+    @Embedded var players: List<PlayerModel> = ArrayList()
 ) : Parcelable

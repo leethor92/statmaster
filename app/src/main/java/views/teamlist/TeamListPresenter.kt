@@ -32,7 +32,7 @@ class TeamListPresenter(view: BaseView) : BasePresenter(view) {
   }
 
   fun loadTeamsSearch(containingString: String){
-    view?.showTeams(app.teams.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) })
+    view?.showTeams(app.teams.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase())} as MutableList<TeamModel> )
   }
 
   fun loadTeams(){

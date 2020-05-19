@@ -159,17 +159,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/score" />
 
+
+            <Spinner
+                android:id="@+id/teamList"
+                android:layout_width="156dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winCheckbox" />
+
+            <TextView
+                android:id="@+id/spinnerText"
+                android:layout_width="157dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="52dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="Select a team"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winCheckbox" />
+
             <ScrollView
                 android:id="@+id/scrollView"
-                android:layout_width="331dp"
-                android:layout_height="429dp"
+                android:layout_width="316dp"
+                android:layout_height="400dp"
                 android:layout_marginStart="38dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="42dp"
                 android:fillViewport="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/winCheckbox">
+                app:layout_constraintTop_toBottomOf="@+id/teamList">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView1"

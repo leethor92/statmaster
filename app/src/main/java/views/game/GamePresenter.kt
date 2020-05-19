@@ -1,5 +1,6 @@
 package org.wit.placemark.activities
 
+import android.util.Log
 import main.MainApp
 import models.GameModel
 import models.PlayerModel
@@ -13,20 +14,22 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
 
     var game = GameModel()
     var edit = false;
-    var team = TeamModel()
 
     init {
         app = view.application as MainApp
 
         doAsync {
             val players = app.players.findAll()
+
             uiThread {
 
                 if (view.intent.hasExtra("game_edit")) {
                     edit = true
                     game = view.intent.extras?.getParcelable<GameModel>("game_edit")!!
+
                     var totalPlayerPoints = view.getTotalPlayerPoints(players)
                     var totalPlayerGoals = view.getTotalPlayerGoals(players)
+
                     view.showGame(game, totalPlayerGoals, totalPlayerPoints)
                 }
             }
@@ -58,6 +61,14 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         view?.finish()
     }
 
+    fun loadTeams(){
+        doAsync {
+            val teams = app.teams.findAll()
+            uiThread {
+                view?.showTeams(teams)
+            }
+        }
+    }
 
     fun doDelete() {
         doAsync {

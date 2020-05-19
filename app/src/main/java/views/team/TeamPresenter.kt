@@ -40,6 +40,7 @@ class TeamPresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
 
   fun doAddOrSave(teamName: String) {
     team.name = teamName
+    team.players =  app.players.findAll().filter {it.teamId == team.id}
 
     doAsync {
       if (edit) {
