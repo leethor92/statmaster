@@ -20,5 +20,6 @@ data class GameModel(
     var draw: Boolean = false,
     var loss: Boolean = false,
     var teamId: Long = 0,
-    @Embedded var players: List<PlayerModel> = ArrayList()
+    var spinnerPos: Int = 0,
+    @Embedded var players: MutableList<PlayerModel> = ArrayList()
     ) : Parcelable

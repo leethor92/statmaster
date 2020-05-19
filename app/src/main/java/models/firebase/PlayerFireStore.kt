@@ -24,7 +24,7 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
     lateinit var db: DatabaseReference
     lateinit var st: StorageReference
 
-    override fun findAll(): List<PlayerModel> {
+    override fun findAll(): MutableList<PlayerModel> {
         return players
     }
 
@@ -59,6 +59,7 @@ class PlayerFireStore(val context: Context) : PlayerStore, AnkoLogger {
             foundPlayer.pass = player.pass
             foundPlayer.missedPass = player.missedPass
             foundPlayer.gameId = player.gameId
+            foundPlayer.teamId = player.teamId
             foundPlayer.accuracy = player.accuracy
             foundPlayer.passingAcc = player.passingAcc
             foundPlayer.ballRetention = player.ballRetention

@@ -9,9 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.activity_game.recyclerView1
-import kotlinx.android.synthetic.main.activity_team.*
-import main.MainApp
+import kotlinx.android.synthetic.main.activity_game.playerRecyclerView
 import models.GameModel
 import models.PlayerModel
 import models.TeamModel
@@ -20,14 +18,17 @@ import org.wit.placemark.activities.GamePresenter
 import org.wit.statmaster.R
 import views.BaseView
 import views.team.PlayerAdapter
-import views.teamlist.TeamAdapter
+import views.team.PlayerListener
 
-class GameView : BaseView() , AnkoLogger, AdapterView.OnItemSelectedListener {
+class GameView : BaseView() , AnkoLogger, PlayerListener, AdapterView.OnItemSelectedListener {
 
     var game = GameModel()
     var team = TeamModel()
 
     private var allTeams: MutableList<String> = ArrayList()
+    private var teamIds: MutableList<Long> = ArrayList()
+    private var gameTeams: MutableList<TeamModel> = ArrayList()
+    private var players: MutableList<PlayerModel> = ArrayList()
 
     lateinit var presenter: GamePresenter
     lateinit var spinner: Spinner
@@ -41,7 +42,12 @@ class GameView : BaseView() , AnkoLogger, AdapterView.OnItemSelectedListener {
         spinner = this.teamList
         spinner.setOnItemSelectedListener(this)
 
-        presenter.loadTeams()
+
+        val layoutManager = LinearLayoutManager(this)
+        playerRecyclerView.layoutManager = layoutManager
+
+      presenter.loadTeams()
+      presenter.loadPlayers()
 
         super.init(toolbarAdd, true);
     }
@@ -54,8 +60,10 @@ class GameView : BaseView() , AnkoLogger, AdapterView.OnItemSelectedListener {
         lossCheckbox.isChecked = game.loss
         gameGoals.text = game.goal
         gamePoints.text = game.point
+
+        showPlayers(game.players)
     }
-    
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_match, menu)
 
@@ -86,17 +94,26 @@ class GameView : BaseView() , AnkoLogger, AdapterView.OnItemSelectedListener {
         return super.onOptionsItemSelected(item)
     }
 
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    presenter.loadTeams()
-    super.onActivityResult(requestCode, resultCode, data)
+  override fun onPlayerClick(player: PlayerModel, game: GameModel) {
+    presenter.doEditPlayer(player, presenter.game)
   }
 
+  override fun showPlayers (players: MutableList<PlayerModel>) {
+    playerRecyclerView.adapter = PlayerAdapter(presenter.game.players, this)
+    playerRecyclerView.adapter?.notifyDataSetChanged()
+  }
 
   override fun showTeams(teams: List<TeamModel>) {
+    for (i in teams){
+      gameTeams.add(i)
+    }
+    allTeams.add("Select a team")
+    teamIds.add(0)
+
     teams.forEach {
       allTeams.add(it.name)
-
-    }
+      teamIds.add(it.id)
+      }
 
     val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, allTeams)
 
@@ -110,13 +127,36 @@ class GameView : BaseView() , AnkoLogger, AdapterView.OnItemSelectedListener {
         return players.filter { it.gameId == presenter.game.id }.sumBy { it.goal }
     }
 
+
     override fun getTotalPlayerPoints(players: List<PlayerModel>): Int {
         return players.filter { it.gameId == presenter.game.id }.sumBy { it.point }
     }
 
     override fun onItemSelected(arg0: AdapterView<*>, arg1: View, position: Int, id: Long) {
-        spinnerText!!.text = "Selected : " + allTeams[position]
+      spinnerText!!.text = "Selected : " + allTeams[position]
+
+      var teamId = teamIds[position]
+      presenter.game.teamId = teamId
+
+        for (t in gameTeams) {
+
+          if (t.id == teamIds[position]) {
+            Log.d("Id", "Players: ${t.players.size}")
+            for (i in t.players) {
+              i.gameId = presenter.game.id
+              players.add(i)
+            }
+            presenter.game.players = players
+            Log.d("Id", "Players: ${players.size}")
+          }
+        }
     }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    presenter.loadTeams()
+    presenter.loadPlayers()
+    super.onActivityResult(requestCode, resultCode, data)
+  }
 
     override fun onNothingSelected(arg0: AdapterView<*>) {
 

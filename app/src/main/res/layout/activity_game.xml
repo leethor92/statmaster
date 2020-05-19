@@ -195,7 +195,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/teamList">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView1"
+                    android:id="@+id/playerRecyclerView"
                     android:layout_width="410dp"
                     android:layout_height="427dp"
                     android:scrollbars="vertical"

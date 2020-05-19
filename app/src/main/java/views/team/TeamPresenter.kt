@@ -18,6 +18,8 @@ class TeamPresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
   var team = TeamModel()
   var edit = false;
 
+  private var teams: List<TeamModel> = arrayListOf()
+
   init {
     app = view.application as MainApp
 
@@ -81,7 +83,7 @@ class TeamPresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
 
   fun loadPlayersSearch(containingString: String)
   {
-    view?.showPlayers(app.players.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) })
+    view?.showPlayers(app.players.findAll().filter { it.name.toLowerCase().contains(containingString.toLowerCase()) } as MutableList<PlayerModel>)
   }
 
 }

@@ -1,7 +1,7 @@
 package models
 
 interface PlayerStore {
-    fun findAll(): List<PlayerModel>
+    fun findAll(): MutableList<PlayerModel>
     fun create(player: PlayerModel) : Long
     fun update(player: PlayerModel)
     fun delete(player: PlayerModel)

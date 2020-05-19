@@ -19,12 +19,21 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
     var team = TeamModel()
 
     var edit = false;
+    var gameEdit = false;
 
     init {
-        if (view.intent.hasExtra("player_edit")) {
+        if (view.intent.hasExtra("player_edit") && view.intent.hasExtra("team_data")!!) {
             edit = true
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
             team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
+
+            view.showPlayer(player)
+        }
+        else if (view.intent.hasExtra("game_data"))
+        {
+            gameEdit = true
+            player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
+            game = view.intent.extras?.getParcelable<GameModel>("game_data")!!
 
             view.showPlayer(player)
         }
@@ -43,8 +52,13 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         player.wide = wides
         player.possession = possessions
         player.pass = passes
-        player.gameId = game.id
-        player.teamId = team.id
+        if (gameEdit)
+        {
+            player.gameId = game.id
+            player.teamId = game.teamId
+        } else {
+            player.teamId = team.id
+        }
         player.lostPossession = lostPossessions
         player.missedPass = missedPasses
         player.accuracy = accuracy
@@ -55,6 +69,8 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         if (edit) {
             app.players.update(player)
 
+        } else if (gameEdit){
+            app.players.update(player)
         } else {
             app.players.create(player)
         }

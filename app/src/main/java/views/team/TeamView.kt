@@ -2,6 +2,7 @@ package views.team
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
@@ -94,7 +95,7 @@ class TeamView : BaseView() , AnkoLogger, PlayerListener {
     presenter.doEditPlayer(player, presenter.team)
   }
 
-  override fun showPlayers (players: List<PlayerModel>) {
+  override fun showPlayers (players: MutableList<PlayerModel>) {
     recyclerView1.adapter = PlayerAdapter(players.filter { it.teamId == presenter.team.id }, this)
     recyclerView1.adapter?.notifyDataSetChanged()
   }

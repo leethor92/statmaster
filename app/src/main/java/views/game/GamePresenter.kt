@@ -44,6 +44,8 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         game.loss = lossCheckbox
         game.goal = "Goals: " + view?.getTotalPlayerGoals( app.players.findAll())
         game.point = "Points: " + view?.getTotalPlayerPoints(app.players.findAll())
+        game.teamId
+
 
         doAsync {
             if (edit) {
@@ -55,6 +57,10 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
                 view?.finish()
             }
         }
+    }
+
+    fun doEditPlayer(player: PlayerModel, game: GameModel) {
+        view?.startActivityForResult(view?.intentFor<PlayerView>()?.putExtra("player_edit", player)?.putExtra("game_data", game), 0)
     }
 
     fun doCancel() {
@@ -70,11 +76,17 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         }
     }
 
+    fun loadPlayers(){
+        doAsync {
+            val players = game.players
+            uiThread {
+                view?.showPlayers(players)
+            }
+        }
+    }
+
     fun doDelete() {
         doAsync {
-            app.players.findAll().filter {it.gameId == game.id}.forEach {
-                app.players.delete(it)
-            }
             app.games.delete(game)
             uiThread {
                 view?.finish()
