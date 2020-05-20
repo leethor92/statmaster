@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginView">
+
+  <activity
+      android:id="@+id/loginView"
+      android:name="views.login.LoginView"
+      android:label="activity_login"
+      tools:layout="@layout/activity_login" >
+    <action
+        android:id="@+id/action_loginView_to_gameListView"
+        app:destination="@id/gameListView" />
+  </activity>
+  <activity
+      android:id="@+id/gameListView"
+      android:name="views.gamelist.GameListView"
+      android:label="activity_game_list"
+      tools:layout="@layout/activity_game_list" >
+    <action
+        android:id="@+id/action_gameListView_to_gameView"
+        app:destination="@id/gameView" />
+    <action
+        android:id="@+id/action_gameListView_to_teamListView"
+        app:destination="@id/teamListView" />
+    <action
+        android:id="@+id/action_gameListView_to_settingsView"
+        app:destination="@id/settingsView" />
+  </activity>
+  <activity
+      android:id="@+id/playerView"
+      android:name="views.player.PlayerView"
+      android:label="activity_player"
+      tools:layout="@layout/activity_player" />
+  <activity
+      android:id="@+id/teamView"
+      android:name="views.team.TeamView"
+      android:label="activity_team"
+      tools:layout="@layout/activity_team" >
+    <action
+        android:id="@+id/action_teamView_to_playerView"
+        app:destination="@id/playerView" />
+  </activity>
+  <activity
+      android:id="@+id/teamListView"
+      android:name="views.teamlist.TeamListView"
+      android:label="activity_team_list"
+      tools:layout="@layout/activity_team_list" >
+    <action
+        android:id="@+id/action_teamListView_to_teamView"
+        app:destination="@id/teamView" />
+    <action
+        android:id="@+id/action_teamListView_to_gameListView"
+        app:destination="@id/gameListView" />
+    <action
+        android:id="@+id/action_teamListView_to_settingsView"
+        app:destination="@id/settingsView" />
+  </activity>
+  <activity
+      android:id="@+id/settingsView"
+      android:name="views.settings.SettingsView"
+      android:label="activity_settings"
+      tools:layout="@layout/activity_settings" >
+    <action
+        android:id="@+id/action_settingsView_to_gameListView"
+        app:destination="@id/gameListView" />
+    <action
+        android:id="@+id/action_settingsView_to_teamListView"
+        app:destination="@id/teamListView" />
+  </activity>
+  <activity
+      android:id="@+id/gameView"
+      android:name="org.wit.statmaster.activities.GameView"
+      android:label="GameView" >
+    <action
+        android:id="@+id/action_gameView_to_playerView"
+        app:destination="@id/playerView" />
+  </activity>
+</navigation>
