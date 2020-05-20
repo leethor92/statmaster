@@ -60,7 +60,6 @@ class GameView : BaseView() , AnkoLogger, PlayerListener, AdapterView.OnItemSele
         lossCheckbox.isChecked = game.loss
         gameGoals.text = game.goal
         gamePoints.text = game.point
-
         showPlayers(game.players)
     }
 
@@ -87,7 +86,8 @@ class GameView : BaseView() , AnkoLogger, PlayerListener, AdapterView.OnItemSele
                     toast(R.string.checkbox_error)
                 }
                 else {
-                    presenter.doAddOrSave(gameTitle.text.toString(), score.text.toString(), winCheckbox.isChecked, drawCheckbox.isChecked, lossCheckbox.isChecked)
+                    presenter.doAddOrSave(gameTitle.text.toString(), score.text.toString(), winCheckbox.isChecked, drawCheckbox.isChecked, lossCheckbox.isChecked,
+                        spinnerText.text.toString())
                 }
             }
         }
@@ -141,13 +141,11 @@ class GameView : BaseView() , AnkoLogger, PlayerListener, AdapterView.OnItemSele
         for (t in gameTeams) {
 
           if (t.id == teamIds[position]) {
-            Log.d("Id", "Players: ${t.players.size}")
             for (i in t.players) {
               i.gameId = presenter.game.id
               players.add(i)
             }
             presenter.game.players = players
-            Log.d("Id", "Players: ${players.size}")
           }
         }
     }

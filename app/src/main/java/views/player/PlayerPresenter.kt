@@ -20,20 +20,22 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
 
     var edit = false;
     var gameEdit = false;
+    private var gamePlayers: MutableList<PlayerModel> = ArrayList()
 
     init {
         if (view.intent.hasExtra("player_edit") && view.intent.hasExtra("team_data")!!) {
             edit = true
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
             team = view.intent.extras?.getParcelable<TeamModel>("team_data")!!
-
             view.showPlayer(player)
         }
         else if (view.intent.hasExtra("game_data"))
         {
+
             gameEdit = true
             player = view.intent.extras?.getParcelable<PlayerModel>("player_edit")!!
             game = view.intent.extras?.getParcelable<GameModel>("game_data")!!
+            gamePlayers = game.players
 
             view.showPlayer(player)
         }
@@ -54,8 +56,8 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         player.pass = passes
         if (gameEdit)
         {
+            player.teamId = team.id
             player.gameId = game.id
-            player.teamId = game.teamId
         } else {
             player.teamId = team.id
         }
@@ -68,10 +70,21 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
         doAsync {
         if (edit) {
             app.players.update(player)
+        } /*else if (gameEdit)
+        {
+            var count = 0
+            for (i in gamePlayers) {
+                count++
+                if (i.id == player.id)
+                {
+                    var listPos = count
+                    game.players.set(listPos, player)
+                    break
+                }
+            }
 
-        } else if (gameEdit){
-            app.players.update(player)
-        } else {
+        }*/
+        else {
             app.players.create(player)
         }
             uiThread {
@@ -86,7 +99,22 @@ class PlayerPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doDelete() {
         doAsync {
-            app.players.delete(player)
+
+           /* if (gameEdit) {
+                var count = 0
+                for (i in gamePlayers) {
+                    count++
+                    if (i.id == player.id)
+                    {
+                        var listPos = count
+                        game.players.removeAt(listPos)
+                        break
+                    }
+                }
+            }
+            else {*/
+                app.players.delete(player)
+            //}
             uiThread {
                 view?.finish()
             }

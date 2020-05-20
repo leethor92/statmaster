@@ -44,7 +44,6 @@ class GameFireStore(val context: Context) : GameStore, AnkoLogger {
             foundGame.goal = game.goal
             foundGame.point = game.point
             foundGame.players = game.players
-            foundGame.spinnerPos = game.spinnerPos
         }
 
         db.child("users").child(userId).child("games").child(game.fbId).setValue(game)

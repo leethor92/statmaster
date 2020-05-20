@@ -36,7 +36,7 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         }
     }
 
-    fun doAddOrSave(gameTitle: String, score: String, winCheckbox: Boolean, drawCheckbox: Boolean, lossCheckbox: Boolean) {
+    fun doAddOrSave(gameTitle: String, score: String, winCheckbox: Boolean, drawCheckbox: Boolean, lossCheckbox: Boolean, spinner: String) {
         game.title = gameTitle
         game.score = score
         game.win = winCheckbox
@@ -44,8 +44,8 @@ class GamePresenter(view: BaseView) : BasePresenter(view), AnkoLogger {
         game.loss = lossCheckbox
         game.goal = "Goals: " + view?.getTotalPlayerGoals( app.players.findAll())
         game.point = "Points: " + view?.getTotalPlayerPoints(app.players.findAll())
+        game.players
         game.teamId
-
 
         doAsync {
             if (edit) {
