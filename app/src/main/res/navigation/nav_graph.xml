@@ -73,7 +73,8 @@
   <activity
       android:id="@+id/gameView"
       android:name="org.wit.statmaster.activities.GameView"
-      android:label="GameView" >
+      android:label="GameView"
+      tools:layout="@layout/activity_game" >
     <action
         android:id="@+id/action_gameView_to_playerView"
         app:destination="@id/playerView" />
