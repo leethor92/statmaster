@@ -27,6 +27,7 @@ class SettingsPresenter(view: BaseView): BasePresenter(view) {
         view?.navigateTo(VIEW.LOGIN)
     }
 
+    //function that allows user to update email and password
     fun doUpdateSettings(email: String, password: String) {
         view?.showProgress()
         FirebaseAuth.getInstance().currentUser?.updateEmail(email)?.addOnCompleteListener(view!!) { task ->

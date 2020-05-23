@@ -344,6 +344,7 @@ class PlayerView : BaseView(), AnkoLogger {
             }
     }
 
+    //function to calculate shooting accuracy percentage
     private fun accuracyCalc() {
         var points = Integer.parseInt(totalPoints.text.toString())
         var goals = Integer.parseInt(totalGoals.text.toString())
@@ -352,12 +353,14 @@ class PlayerView : BaseView(), AnkoLogger {
         player.accuracy = round((points.toDouble() + goals.toDouble()) / (goals.toDouble() + points.toDouble() + wides.toDouble()) * 100.toDouble())
     }
 
+    //function to calculate passing accuracy percentage
     private fun passingAccCalc() {
         var passes = Integer.parseInt(total_passes.text.toString())
         var missedPasses = Integer.parseInt(total_missed_passes.text.toString())
         player.passingAcc = round(passes.toDouble() / (passes.toDouble() + missedPasses.toDouble()) * 100.toDouble())
     }
 
+    //function to calculate ball retention percentage
     private fun ballRetentionCalc() {
         var possessions = Integer.parseInt(total_possessions.text.toString())
         var lostPossessions = Integer.parseInt(totalLostPossessions.text.toString())

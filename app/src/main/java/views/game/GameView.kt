@@ -80,7 +80,7 @@ class GameView : BaseView() , AnkoLogger, PlayerListener, AdapterView.OnItemSele
             R.id.item_save -> {
                 if (gameTitle.text.toString().isEmpty()) {
                     toast(R.string.enter_game_title)
-                }
+                } //Check to make sure the user can only select one checkbox
                 else if ( (winCheckbox.isChecked && drawCheckbox.isChecked) || (winCheckbox.isChecked && lossCheckbox.isChecked)
                         || (drawCheckbox.isChecked && lossCheckbox.isChecked)){
                     toast(R.string.checkbox_error)
@@ -104,17 +104,20 @@ class GameView : BaseView() , AnkoLogger, PlayerListener, AdapterView.OnItemSele
   }
 
   override fun showTeams(teams: List<TeamModel>) {
+    //loops through the team list and add it to gameTeams List
     for (i in teams){
       gameTeams.add(i)
     }
     allTeams.add("Select a team")
     teamIds.add(0)
 
+    //Team name & id is added to each mutable lists
     teams.forEach {
       allTeams.add(it.name)
       teamIds.add(it.id)
       }
 
+    //spinner displays all items in the allteams list
     val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, allTeams)
 
     aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -135,9 +138,13 @@ class GameView : BaseView() , AnkoLogger, PlayerListener, AdapterView.OnItemSele
     override fun onItemSelected(arg0: AdapterView<*>, arg1: View, position: Int, id: Long) {
       spinnerText!!.text = "Selected : " + allTeams[position]
 
+      //team id is selected using the position of the spinner selection
       var teamId = teamIds[position]
       presenter.game.teamId = teamId
 
+      //loop through the list of teams and if the team id matches the spinner team id
+      //then players are added to the game list
+      //players are added by looping though all players in the team and adding them to the game
         for (t in gameTeams) {
 
           if (t.id == teamIds[position]) {

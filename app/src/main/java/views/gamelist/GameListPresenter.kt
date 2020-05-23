@@ -31,6 +31,10 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
     view?.startActivityForResult(view?.intentFor<GameView>()?.putExtra("game_edit", game), 0)
   }
 
+  //function that filter's won games
+  //all games in the app are filtered on the win field
+  //if checked they are displayed in the list
+  //draw and lost functions work the same
   fun doShowWonGames(checked: Boolean){
     view?.showGames(if (checked) app.games.findAll().filter { it.win } else app.games.findAll())
   }
@@ -43,6 +47,7 @@ class GameListPresenter(view: BaseView) : BasePresenter(view) {
     view?.showGames(if (checked) app.games.findAll().filter { it.loss } else app.games.findAll())
   }
 
+  //function to display games that contain the users search string
   fun loadGamesSearch(containingString: String){
     view?.showGames(app.games.findAll().filter { it.title.toLowerCase().contains(containingString.toLowerCase()) })
   }
