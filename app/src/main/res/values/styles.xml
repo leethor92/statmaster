@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="stockBottomNavigationView.InActive" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="stockBottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

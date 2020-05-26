@@ -96,8 +96,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/colorAccent"
-        app:itemIconTint="@color/colorPrimary"
-        app:itemTextColor="@color/colorPrimary"
+        app:itemIconTint="@drawable/tab_colour"
+        app:itemTextColor="@drawable/tab_colour"
+        app:itemTextAppearanceInactive="@style/stockBottomNavigationView.InActive"
+        app:itemTextAppearanceActive="@style/stockBottomNavigationView.Active"
         app:menu="@menu/menu_navigation"
         app:labelVisibilityMode="labeled"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

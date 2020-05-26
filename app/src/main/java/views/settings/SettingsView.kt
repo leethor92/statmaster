@@ -44,13 +44,24 @@ class SettingsView: BaseView(), AnkoLogger {
 
         val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNav)
         bottomNavView.setOnNavigationItemSelectedListener { menuItem -> onOptionsItemSelected(menuItem) }
+
+        bottomNavView.menu.findItem(R.id.item_user).isChecked = true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_logout -> presenter.doLogout()
-            R.id.item_game -> presenter.doGame()
-            R.id.item_team -> presenter.doTeam()
+            R.id.item_team -> {
+                presenter.doTeam()
+                return true
+            }
+            R.id.item_logout -> {
+                presenter.doLogout()
+                return true
+            }
+            R.id.item_game -> {
+                presenter.doGame()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }

@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_team_list.*
 import models.TeamModel
 import org.wit.statmaster.R
@@ -30,6 +31,8 @@ class TeamListView : BaseView(), TeamListener {
 
     val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNav)
     bottomNavView.setOnNavigationItemSelectedListener { menuItem -> onOptionsItemSelected(menuItem) }
+
+    bottomNavView.menu.findItem(R.id.item_team).isChecked = true
   }
 
   override fun showTeams(teams: List<TeamModel>) {
@@ -61,9 +64,20 @@ class TeamListView : BaseView(), TeamListener {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.item_add -> presenter.doAddTeam()
-      R.id.item_logout -> presenter.doLogout()
-      R.id.item_user ->  presenter.doSettings()
-      R.id.item_game -> presenter.doGame()
+      R.id.item_team -> {
+        return true
+      }
+      R.id.item_logout -> {
+        presenter.doLogout()
+        return true
+      }
+      R.id.item_user -> {
+        presenter.doSettings()
+        return true
+      }
+      R.id.item_game -> { presenter.doGame()
+        return true
+      }
     }
     return super.onOptionsItemSelected(item)
   }

@@ -29,6 +29,8 @@ class GameListView : BaseView(), GameListener {
 
     val bottomNavView: BottomNavigationView = findViewById(R.id.bottomNav)
     bottomNavView.setOnNavigationItemSelectedListener { menuItem -> onOptionsItemSelected(menuItem) }
+
+    bottomNavView.menu.findItem(R.id.item_game).isChecked = true
   }
 
   override fun showGames(games: List<GameModel>) {
@@ -60,9 +62,18 @@ class GameListView : BaseView(), GameListener {
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
       R.id.item_add -> presenter.doAddGame()
-      R.id.item_logout ->presenter.doLogout()
-      R.id.item_user ->presenter.doSettings()
-      R.id.item_team -> presenter.doTeams()
+      R.id.item_team -> {
+        presenter.doTeams()
+        return true
+      }
+      R.id.item_logout -> {
+        presenter.doLogout()
+        return true
+      }
+      R.id.item_user -> {
+        presenter.doSettings()
+        return true
+      }
       R.id.item_wonGames -> {
         item.isChecked = !item.isChecked
         presenter.doShowWonGames(item.isChecked)
@@ -76,6 +87,7 @@ class GameListView : BaseView(), GameListener {
         presenter.doShowLostGames(item.isChecked)
       }
     }
+
     return super.onOptionsItemSelected(item)
   }
 
